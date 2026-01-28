@@ -393,6 +393,16 @@ ul {
     z-index: 1;
 }
 
+.bio-photo {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: var(--border-radius-lg);
+    display: block;
+    margin: 0 auto;
+}
+
 .bio-text {
     color: var(--color-text-secondary);
 }
