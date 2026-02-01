@@ -94,7 +94,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe elements for animation
-document.querySelectorAll('.section-title, .section-subtitle, .platform-card, .social-link, .contact-item').forEach(el => {
+document.querySelectorAll('.section-title, .section-subtitle, .band-card, .platform-card, .social-link, .contact-item').forEach(el => {
     el.classList.add('animate-on-scroll');
     observer.observe(el);
 });

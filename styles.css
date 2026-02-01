@@ -466,6 +466,59 @@ ul {
     color: var(--color-text);
 }
 
+/* ===== Banda ===== */
+.band {
+    background: var(--color-bg);
+}
+
+.band-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.band-card {
+    background: var(--color-bg-secondary);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: var(--spacing-md);
+    text-align: center;
+    transition: all var(--transition-normal);
+}
+
+.band-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--color-primary);
+    box-shadow: 0 12px 40px rgba(0, 102, 255, 0.2);
+}
+
+.band-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--border-radius-lg);
+    background:
+        linear-gradient(135deg, rgba(0, 102, 255, 0.2), transparent),
+        var(--color-bg-tertiary);
+    background-size: cover;
+    background-position: center;
+    margin-bottom: var(--spacing-sm);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.band-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 4px;
+}
+
+.band-role {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+}
+
 /* ===== Redes Sociales ===== */
 .social {
     background: var(--color-bg-secondary);
