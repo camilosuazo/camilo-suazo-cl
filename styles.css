@@ -790,6 +790,13 @@ ul {
     gap: var(--spacing-md);
 }
 
+.contact-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
 .contact-item {
     display: flex;
     align-items: flex-start;

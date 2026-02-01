@@ -99,47 +99,15 @@ document.querySelectorAll('.section-title, .section-subtitle, .band-card, .show-
     observer.observe(el);
 });
 
-// ===== Formulario de contacto =====
+// ===== Formulario de contacto (Formspree) =====
 const contactForm = document.getElementById('contact-form');
 
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const formData = new FormData(this);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const message = formData.get('message');
-
-    // Validación básica
-    if (!name || !email || !message) {
-        showNotification('Por favor, completa todos los campos.', 'error');
-        return;
-    }
-
-    if (!isValidEmail(email)) {
-        showNotification('Por favor, ingresa un email válido.', 'error');
-        return;
-    }
-
-    // Simular envío (aquí podrías integrar con un servicio real)
-    const submitBtn = this.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-
-    submitBtn.textContent = 'Enviando...';
-    submitBtn.disabled = true;
-
-    // Simulación de envío
-    setTimeout(() => {
-        showNotification('¡Mensaje enviado correctamente! Te responderé pronto.', 'success');
-        this.reset();
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-    }, 1500);
-});
-
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+if (contactForm) {
+    contactForm.addEventListener('submit', function() {
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.textContent = 'Enviando...';
+        submitBtn.disabled = true;
+    });
 }
 
 function showNotification(message, type) {

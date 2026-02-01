@@ -228,19 +228,7 @@
 
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
-                            </svg>
-                        </div>
-                        <div class="contact-details">
-                            <span class="contact-label">Email</span>
-                            <a href="mailto:contacto@camilosuazo.cl" class="contact-value">contacto@camilosuazo.cl</a>
-                        </div>
-                    </div>
-
+                    <p class="contact-text">¿Tienes alguna propuesta, consulta o simplemente quieres saludar? Escríbeme y te responderé a la brevedad.</p>
                     <div class="contact-item">
                         <div class="contact-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -255,16 +243,18 @@
                     </div>
                 </div>
 
-                <form class="contact-form" id="contact-form">
+                <form class="contact-form" id="contact-form" action="https://formspree.io/f/mdadzald" method="POST">
                     <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Nombre" required>
+                        <input type="text" name="name" placeholder="Nombre" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Email" required>
+                        <input type="email" name="email" placeholder="Email" required>
                     </div>
                     <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Mensaje" rows="5" required></textarea>
+                        <textarea name="message" placeholder="Mensaje" rows="5" required></textarea>
                     </div>
+                    <input type="hidden" name="_subject" value="Nuevo mensaje desde camilosuazo.cl">
+                    <input type="hidden" name="_next" value="https://camilosuazo.cl">
                     <button type="submit" class="btn btn-primary btn-full">Enviar Mensaje</button>
                 </form>
             </div>
