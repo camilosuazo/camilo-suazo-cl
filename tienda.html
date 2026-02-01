@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tienda oficial de Camilo Suazo - Merchandising, música y más.">
+    <meta name="keywords" content="Camilo Suazo, tienda, merchandising, música, Chile">
+    <meta property="og:title" content="Tienda - Camilo Suazo">
+    <meta property="og:description" content="Tienda oficial del artista Camilo Suazo">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://camilosuazo.cl/tienda">
+    <title>Tienda | Camilo Suazo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar navbar-solid" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">CS</a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="index.html#biografia" class="nav-link">Biografía</a></li>
+                <li><a href="index.html#banda" class="nav-link">Banda</a></li>
+                <li><a href="index.html#shows" class="nav-link">Shows</a></li>
+                <li><a href="index.html#musica" class="nav-link">Música</a></li>
+                <li><a href="https://www.youtube.com/channel/UCwbOqTZa9WiLjVpLk8gGNew" class="nav-link" target="_blank" rel="noopener noreferrer">Videos</a></li>
+                <li><a href="tienda.html" class="nav-link active">Tienda</a></li>
+                <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Store Header -->
+    <section class="store-header">
+        <div class="container">
+            <h1 class="store-title">Tienda</h1>
+            <p class="store-subtitle">Merchandising oficial</p>
+        </div>
+    </section>
+
+    <!-- Store Content -->
+    <section class="section store-content">
+        <div class="container">
+            <div class="store-grid">
+                <article class="store-product">
+                    <div class="store-product-gallery">
+                        <button class="gallery-arrow gallery-prev" aria-label="Anterior">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"/>
+                            </svg>
+                        </button>
+                        <div class="store-product-image" data-images='["img/polera-negra.png", "img/polera-blanca.png"]' style="background-image: url('img/polera-negra.png');"></div>
+                        <button class="gallery-arrow gallery-next" aria-label="Siguiente">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"/>
+                            </svg>
+                        </button>
+                        <div class="gallery-dots">
+                            <span class="gallery-dot active" data-index="0"></span>
+                            <span class="gallery-dot" data-index="1"></span>
+                        </div>
+                    </div>
+                    <div class="store-product-info">
+                        <h3 class="store-product-name">Polera "Hay huellas que ocultan"</h3>
+                        <p class="store-product-variant">Negro / Blanco</p>
+                        <p class="store-product-price">$10.000</p>
+                        <span class="store-product-badge">Próximamente</span>
+                    </div>
+                </article>
+
+                <article class="store-product">
+                    <div class="store-product-image" style="background-image: url('img/disco-envio.png');"></div>
+                    <div class="store-product-info">
+                        <h3 class="store-product-name">Disco "Envío"</h3>
+                        <p class="store-product-variant">CD Físico</p>
+                        <p class="store-product-price">$12.000</p>
+                        <span class="store-product-badge">Próximamente</span>
+                    </div>
+                </article>
+
+                <article class="store-product">
+                    <div class="store-product-image" style="background-image: url('img/taza.png');"></div>
+                    <div class="store-product-info">
+                        <h3 class="store-product-name">Taza "Pájaro Azul"</h3>
+                        <p class="store-product-variant">Cerámica</p>
+                        <p class="store-product-price">$8.000</p>
+                        <span class="store-product-badge">Próximamente</span>
+                    </div>
+                </article>
+            </div>
+
+            <p class="store-note">Síguenos en redes sociales para enterarte cuando estén disponibles</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Camilo Suazo</div>
+                <p class="footer-text">&copy; 2026 Camilo Suazo. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+    // Galería de productos
+    (function() {
+        const gallery = document.querySelector('.store-product-gallery');
+        if (!gallery) return;
+
+        const imageEl = gallery.querySelector('.store-product-image');
+        const images = ['img/polera-negra.png', 'img/polera-blanca.png'];
+        const dots = gallery.querySelectorAll('.gallery-dot');
+        const prevBtn = gallery.querySelector('.gallery-prev');
+        const nextBtn = gallery.querySelector('.gallery-next');
+        let currentIndex = 0;
+
+        function updateImage() {
+            imageEl.style.backgroundImage = 'url(' + images[currentIndex] + ')';
+            dots.forEach(function(dot, i) {
+                if (i === currentIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        prevBtn.onclick = function(e) {
+            e.preventDefault();
+            currentIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+            updateImage();
+        };
+
+        nextBtn.onclick = function(e) {
+            e.preventDefault();
+            currentIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+            updateImage();
+        };
+
+        dots.forEach(function(dot, i) {
+            dot.onclick = function(e) {
+                e.preventDefault();
+                currentIndex = i;
+                updateImage();
+            };
+        });
+
+        // Lightbox
+        var lightbox = document.createElement('div');
+        lightbox.id = 'lightbox';
+        lightbox.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:none;align-items:center;justify-content:center;z-index:9999;';
+        lightbox.innerHTML = '<span style="position:absolute;top:20px;right:30px;font-size:40px;color:white;cursor:pointer;" id="closeLightbox">&times;</span><img id="lightboxImg" style="max-width:90%;max-height:90%;object-fit:contain;">';
+        document.body.appendChild(lightbox);
+
+        document.getElementById('closeLightbox').onclick = function() {
+            lightbox.style.display = 'none';
+        };
+
+        lightbox.onclick = function(e) {
+            if (e.target === lightbox) lightbox.style.display = 'none';
+        };
+
+        // Click en imágenes para abrir lightbox
+        document.querySelectorAll('.store-product-image').forEach(function(img) {
+            img.style.cursor = 'pointer';
+            img.onclick = function(e) {
+                if (e.target.classList.contains('gallery-arrow') || e.target.closest('.gallery-arrow')) return;
+                var bg = img.style.backgroundImage;
+                var url = bg.replace(/url\(['"]?/, '').replace(/['"]?\)/, '');
+                document.getElementById('lightboxImg').src = url;
+                lightbox.style.display = 'flex';
+            };
+        });
+    })();
+    </script>
+</body>
+</html>

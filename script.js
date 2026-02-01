@@ -94,7 +94,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe elements for animation
-document.querySelectorAll('.section-title, .section-subtitle, .band-card, .platform-card, .social-link, .contact-item').forEach(el => {
+document.querySelectorAll('.section-title, .section-subtitle, .band-card, .show-item, .shows-empty, .platform-card, .social-link, .contact-item').forEach(el => {
     el.classList.add('animate-on-scroll');
     observer.observe(el);
 });
@@ -233,4 +233,153 @@ window.addEventListener('scroll', () => {
 // ===== Prevenir flash de contenido no estilizado =====
 document.addEventListener('DOMContentLoaded', () => {
     document.body.style.visibility = 'visible';
+    initProductGalleries();
+    initLightbox();
 });
+
+// ===== Galería de productos (Tienda) =====
+function initProductGalleries() {
+    const galleries = document.querySelectorAll('.store-product-gallery');
+
+    galleries.forEach(gallery => {
+        const imageEl = gallery.querySelector('.store-product-image');
+        if (!imageEl || !imageEl.dataset.images) return;
+
+        const images = JSON.parse(imageEl.dataset.images);
+        const dots = gallery.querySelectorAll('.gallery-dot');
+        const prevBtn = gallery.querySelector('.gallery-prev');
+        const nextBtn = gallery.querySelector('.gallery-next');
+        let currentIndex = 0;
+
+        function updateImage(index) {
+            if (images.length === 0) return;
+            currentIndex = ((index % images.length) + images.length) % images.length;
+            imageEl.style.backgroundImage = `url('${images[currentIndex]}')`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            updateImage(currentIndex - 1);
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            updateImage(currentIndex + 1);
+        });
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                updateImage(parseInt(dot.dataset.index));
+            });
+        });
+    });
+}
+
+// ===== Lightbox para ver imágenes =====
+function initLightbox() {
+    // Crear el lightbox
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+        <button class="lightbox-close" aria-label="Cerrar">&times;</button>
+        <button class="lightbox-prev" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"/>
+            </svg>
+        </button>
+        <img class="lightbox-image" src="" alt="Imagen del producto">
+        <button class="lightbox-next" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"/>
+            </svg>
+        </button>
+    `;
+    document.body.appendChild(lightbox);
+
+    const lightboxImage = lightbox.querySelector('.lightbox-image');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    const prevBtn = lightbox.querySelector('.lightbox-prev');
+    const nextBtn = lightbox.querySelector('.lightbox-next');
+
+    let currentImages = [];
+    let currentIndex = 0;
+
+    function openLightbox(images, index) {
+        currentImages = images;
+        currentIndex = index;
+        updateLightboxImage();
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Mostrar/ocultar flechas según cantidad de imágenes
+        const hasMultiple = images.length > 1;
+        prevBtn.style.display = hasMultiple ? 'flex' : 'none';
+        nextBtn.style.display = hasMultiple ? 'flex' : 'none';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function updateLightboxImage() {
+        lightboxImage.src = currentImages[currentIndex];
+    }
+
+    function showPrev() {
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        updateLightboxImage();
+    }
+
+    function showNext() {
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        updateLightboxImage();
+    }
+
+    closeBtn.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', showPrev);
+    nextBtn.addEventListener('click', showNext);
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') showPrev();
+        if (e.key === 'ArrowRight') showNext();
+    });
+
+    // Agregar click a las imágenes de productos
+    document.querySelectorAll('.store-product-image').forEach(imageEl => {
+        imageEl.style.cursor = 'pointer';
+        imageEl.addEventListener('click', () => {
+            let images = [];
+            if (imageEl.dataset.images) {
+                images = JSON.parse(imageEl.dataset.images);
+            } else {
+                const bgImage = imageEl.style.backgroundImage;
+                const match = bgImage.match(/url\(['"]?([^'"]+)['"]?\)/);
+                if (match) images = [match[1]];
+            }
+
+            if (images.length > 0) {
+                // Encontrar índice actual basado en la imagen mostrada
+                const currentBg = imageEl.style.backgroundImage;
+                let startIndex = 0;
+                images.forEach((img, i) => {
+                    if (currentBg.includes(img)) startIndex = i;
+                });
+                openLightbox(images, startIndex);
+            }
+        });
+    });
+}
