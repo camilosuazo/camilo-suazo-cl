@@ -58,7 +58,7 @@
     <!-- Store Content -->
     <section class="section store-content">
         <div class="container">
-            <div class="store-grid">
+            <div class="store-grid" id="store-grid" aria-live="polite">
                 <article class="store-product">
                     <div class="store-product-gallery">
                         <button class="gallery-arrow gallery-prev" aria-label="Anterior">
@@ -126,7 +126,7 @@
                 </article>
             </div>
 
-            <p class="store-note">Síguenos en redes sociales para enterarte cuando estén disponibles</p>
+            <p class="store-note" id="store-note">Síguenos en redes sociales para enterarte cuando estén disponibles</p>
         </div>
     </section>
 
@@ -141,77 +141,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-    // Galería de productos
-    (function() {
-        const gallery = document.querySelector('.store-product-gallery');
-        if (!gallery) return;
-
-        const imageEl = gallery.querySelector('.store-product-image');
-        const images = ['img/polera-negra.png', 'img/polera-blanca.png'];
-        const dots = gallery.querySelectorAll('.gallery-dot');
-        const prevBtn = gallery.querySelector('.gallery-prev');
-        const nextBtn = gallery.querySelector('.gallery-next');
-        let currentIndex = 0;
-
-        function updateImage() {
-            imageEl.style.backgroundImage = 'url(' + images[currentIndex] + ')';
-            dots.forEach(function(dot, i) {
-                if (i === currentIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-        }
-
-        prevBtn.onclick = function(e) {
-            e.preventDefault();
-            currentIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
-            updateImage();
-        };
-
-        nextBtn.onclick = function(e) {
-            e.preventDefault();
-            currentIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
-            updateImage();
-        };
-
-        dots.forEach(function(dot, i) {
-            dot.onclick = function(e) {
-                e.preventDefault();
-                currentIndex = i;
-                updateImage();
-            };
-        });
-
-        // Lightbox
-        var lightbox = document.createElement('div');
-        lightbox.id = 'lightbox';
-        lightbox.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:none;align-items:center;justify-content:center;z-index:9999;';
-        lightbox.innerHTML = '<span style="position:absolute;top:20px;right:30px;font-size:40px;color:white;cursor:pointer;" id="closeLightbox">&times;</span><img id="lightboxImg" style="max-width:90%;max-height:90%;object-fit:contain;">';
-        document.body.appendChild(lightbox);
-
-        document.getElementById('closeLightbox').onclick = function() {
-            lightbox.style.display = 'none';
-        };
-
-        lightbox.onclick = function(e) {
-            if (e.target === lightbox) lightbox.style.display = 'none';
-        };
-
-        // Click en imágenes para abrir lightbox
-        document.querySelectorAll('.store-product-image').forEach(function(img) {
-            img.style.cursor = 'pointer';
-            img.onclick = function(e) {
-                if (e.target.classList.contains('gallery-arrow') || e.target.closest('.gallery-arrow')) return;
-                var bg = img.style.backgroundImage;
-                var url = bg.replace(/url\(['"]?/, '').replace(/['"]?\)/, '');
-                document.getElementById('lightboxImg').src = url;
-                lightbox.style.display = 'flex';
-            };
-        });
-    })();
-    </script>
 </body>
 </html>

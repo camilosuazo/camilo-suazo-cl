@@ -637,9 +637,17 @@ ul {
     color: var(--color-text-secondary);
 }
 
+.show-note {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
 .show-actions {
     display: flex;
     gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
 .btn-tickets {
@@ -1313,9 +1321,27 @@ a.contact-value:hover {
     border-radius: var(--border-radius-sm);
 }
 
+.store-product-badge.is-available {
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.4);
+    color: #A7F3D0;
+}
+
+.store-product-actions {
+    margin-top: var(--spacing-sm);
+}
+
+.btn-store {
+    width: 100%;
+}
+
 .store-note {
     text-align: center;
     margin-top: var(--spacing-lg);
     font-size: 0.95rem;
     color: var(--color-text-muted);
+}
+
+.store-note:empty {
+    display: none;
 }
