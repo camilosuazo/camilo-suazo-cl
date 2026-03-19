@@ -8,7 +8,19 @@
   "shows": {
     "emptyTitle": "Fechas por confirmar",
     "emptySubtitle": "Pronto anunciaremos nuevas presentaciones",
-    "items": []
+    "items": [
+      {
+        "id": "jardin-de-gente-2026-06-12",
+        "date": "2026-06-12",
+        "venue": "Jardin de Gente",
+        "location": "Grajales 2160, 8370171 Santiago, Region Metropolitana",
+        "mapUrl": "https://www.google.com/maps/search/?api=1&query=Grajales+2160%2C+8370171+Santiago%2C+Region+Metropolitana",
+        "postUrl": "",
+        "postLabel": "",
+        "note": "Viernes 12 de junio, 7:00 pm. Cafe y Espacio Cultural Jardin de Gente.",
+        "visible": true
+      }
+    ]
   },
   "store": {
     "note": "Síguenos en redes sociales para enterarte cuando estén disponibles",

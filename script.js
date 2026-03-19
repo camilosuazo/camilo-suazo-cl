@@ -5,6 +5,7 @@ let sectionObserver = null;
 let lightboxController = null;
 
 document.addEventListener('DOMContentLoaded', () => {
+    initEventModal();
     initNavbar();
     initSmoothScroll();
     initScrollAnimations();
@@ -14,6 +15,41 @@ document.addEventListener('DOMContentLoaded', () => {
     initProductGalleries();
     loadAndRenderSiteContent();
 });
+
+function initEventModal() {
+    const modal = document.getElementById('event-modal');
+    const closeButton = document.getElementById('event-modal-close');
+
+    if (!modal || !closeButton) {
+        return;
+    }
+
+    const closeModal = () => {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+    };
+
+    const openModal = () => {
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+    };
+
+    closeButton.addEventListener('click', closeModal);
+
+    modal.querySelectorAll('[data-modal-close]').forEach((element) => {
+        element.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+            closeModal();
+        }
+    });
+
+    window.setTimeout(openModal, 250);
+}
 
 async function loadAndRenderSiteContent() {
     try {

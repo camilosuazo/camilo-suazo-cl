@@ -25,6 +25,21 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="event-modal" id="event-modal" aria-hidden="true">
+        <div class="event-modal-backdrop" data-modal-close></div>
+        <div class="event-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="event-modal-title">
+            <button class="event-modal-close" id="event-modal-close" aria-label="Cerrar aviso">&times;</button>
+            <div class="event-poster">
+                <h2 class="sr-only" id="event-modal-title">Afiche del show en Jardin de Gente</h2>
+                <img src="img/afiche-jardin-de-gente.png" alt="Afiche del show de Camilo Suazo en Jardin de Gente el viernes 12 de junio a las 7 pm" class="event-poster-image-full">
+                <div class="event-poster-actions">
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Grajales+2160%2C+8370171+Santiago%2C+Region+Metropolitana" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Abrir en Google Maps</a>
+                    <a href="#shows" class="btn btn-secondary" data-modal-close>Ver en Shows</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Navegación -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -60,6 +75,23 @@
                 <a href="#musica" class="btn btn-primary">Escuchar Música</a>
                 <a href="#biografia" class="btn btn-secondary">Conocer Más</a>
             </div>
+            <article class="hero-event-banner" aria-label="Proximo show en vivo">
+                <div class="hero-event-date">
+                    <span class="hero-event-month">JUNIO</span>
+                    <span class="hero-event-day">12</span>
+                    <span class="hero-event-time">19:00 HRS</span>
+                </div>
+                <div class="hero-event-copy">
+                    <p class="hero-event-kicker">Proximo Show En Vivo</p>
+                    <h2 class="hero-event-title">Viernes 12 de junio en Jardin de Gente</h2>
+                    <p class="hero-event-text">Cafe y Espacio Cultural Jardin de Gente</p>
+                    <p class="hero-event-text">Grajales 2160, 8370171 Santiago, Region Metropolitana</p>
+                    <div class="hero-event-actions">
+                        <a href="#shows" class="btn btn-secondary">Ver detalles</a>
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query=Grajales+2160%2C+8370171+Santiago%2C+Region+Metropolitana" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Abrir en Google Maps</a>
+                    </div>
+                </div>
+            </article>
 
             <!-- Reproductores -->
             <div class="hero-players" id="hero-players">
