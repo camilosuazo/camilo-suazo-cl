@@ -8,11 +8,11 @@
     <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="shortcut icon" href="/favicon.png" type="image/png">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="admin.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body class="admin-body">
     <section class="admin-auth" id="admin-auth">
@@ -20,7 +20,7 @@
             <p class="admin-eyebrow">Acceso privado</p>
             <h1 class="admin-title admin-title-auth" id="auth-title">Ingresar al admin</h1>
             <p class="admin-auth-copy" id="auth-message">
-                El unico correo permitido es <strong>csuazo.musico@gmail.com</strong>. En este navegador puedes crear o usar tu clave de acceso local.
+                El único correo permitido es <strong>csuazo.musico@gmail.com</strong>. En este navegador puedes crear o usar tu clave de acceso local.
             </p>
 
             <form id="auth-form" class="admin-auth-form">
@@ -30,13 +30,13 @@
                 </label>
 
                 <label class="admin-field">
-                    <span>Contrasena</span>
-                    <input type="password" id="auth-password" placeholder="Ingresa tu contrasena" autocomplete="current-password">
+                    <span>Contraseña</span>
+                    <input type="password" id="auth-password" placeholder="Ingresa tu contraseña" autocomplete="current-password">
                 </label>
 
                 <label class="admin-field" id="auth-confirm-wrap" hidden>
-                    <span>Confirmar contrasena</span>
-                    <input type="password" id="auth-password-confirm" placeholder="Repite tu contrasena" autocomplete="new-password">
+                    <span>Confirmar contraseña</span>
+                    <input type="password" id="auth-password-confirm" placeholder="Repite tu contraseña" autocomplete="new-password">
                 </label>
 
                 <button type="submit" class="btn btn-primary" id="auth-submit">Entrar</button>
@@ -49,13 +49,13 @@
     <div id="admin-app" hidden>
         <header class="admin-topbar">
             <div>
-                <p class="admin-eyebrow">Camilo Suazo</p>
-                <h1 class="admin-title">Administrador de contenido</h1>
+                <p class="admin-eyebrow">Panel interno</p>
+                <h1 class="admin-title">Editor de contenido</h1>
+                <p class="admin-subtitle">Gestiona el archivo <code>data/site-content.json</code> y publica cambios al portafolio.</p>
             </div>
             <div class="admin-topbar-actions">
                 <span class="admin-user-badge" id="admin-user-badge">csuazo.musico@gmail.com</span>
                 <a href="index.html" class="btn btn-secondary">Ver sitio</a>
-                <a href="tienda.html" class="btn btn-secondary">Ver tienda</a>
                 <button type="button" class="btn btn-secondary" id="logout-admin">Cerrar sesion</button>
             </div>
         </header>
@@ -64,8 +64,8 @@
             <section class="admin-panel">
                 <div class="admin-panel-header">
                     <div>
-                        <h2>Publicacion</h2>
-                        <p>Edita el contenido y publica el archivo <code>data/site-content.json</code> directo en GitHub.</p>
+                        <h2>Publicación</h2>
+                        <p>Conecta un token de GitHub para leer y escribir el JSON publicado en el repositorio.</p>
                     </div>
                     <div class="admin-badge">Repo: <strong>camilosuazo/camilo-suazo-cl</strong></div>
                 </div>
@@ -73,7 +73,7 @@
                 <div class="admin-grid admin-grid-two">
                     <label class="admin-field">
                         <span>GitHub token</span>
-                        <input type="password" id="github-token" placeholder="Pega aqui tu token con permiso de Contents: write">
+                        <input type="password" id="github-token" placeholder="Token con permiso Contents: read and write">
                     </label>
 
                     <label class="admin-checkbox">
@@ -81,10 +81,6 @@
                         <span>Recordar token en este navegador</span>
                     </label>
                 </div>
-
-                <p class="admin-help">
-                    Recomendado: token fine-grained solo para este repositorio, con permiso <code>Contents: Read and write</code>.
-                </p>
 
                 <div class="admin-toolbar">
                     <button type="button" class="btn btn-secondary" id="reload-live">Cargar contenido publicado</button>
@@ -97,234 +93,62 @@
                 <div class="admin-status" id="admin-status">Cargando contenido...</div>
             </section>
 
-            <form id="admin-form" class="admin-form">
-                <section class="admin-panel">
-                    <div class="admin-panel-header">
-                        <div>
-                            <h2>Acceso</h2>
-                            <p>Correo autorizado: <strong>csuazo.musico@gmail.com</strong>. Puedes cambiar la contrasena guardada en este navegador.</p>
-                        </div>
+            <section class="admin-panel">
+                <div class="admin-panel-header">
+                    <div>
+                        <h2>Editor JSON</h2>
+                        <p>Edita el contenido del portafolio desde un único archivo. Se valida antes de descargar o publicar.</p>
                     </div>
+                </div>
 
-                    <div class="admin-grid admin-grid-two">
-                        <label class="admin-field">
-                            <span>Contrasena actual</span>
-                            <input type="password" id="access-current-password" placeholder="Contrasena actual">
-                        </label>
+                <label class="admin-field admin-field-editor">
+                    <span>Contenido del sitio</span>
+                    <textarea id="content-editor" class="admin-textarea" spellcheck="false"></textarea>
+                </label>
 
-                        <label class="admin-field">
-                            <span>Nueva contrasena</span>
-                            <input type="password" id="access-new-password" placeholder="Nueva contrasena">
-                        </label>
+                <div class="admin-helper-grid">
+                    <article class="admin-helper-card">
+                        <h3>Estructura esperada</h3>
+                        <p>La estructura actual usa <code>languages</code>, <code>defaultLanguage</code> y <code>translations</code>. Dentro de cada idioma se incluyen <code>site</code>, <code>nav</code>, <code>hero</code>, <code>about</code>, <code>work</code>, <code>stack</code>, <code>projects</code>, <code>education</code>, <code>approach</code>, <code>contact</code> y <code>footer</code>.</p>
+                    </article>
+                    <article class="admin-helper-card">
+                        <h3>Enlaces preparados</h3>
+                        <p>Si quieres ajustar LinkedIn, CV o textos por idioma, edita las ramas <code>translations.es</code> y <code>translations.en</code>.</p>
+                    </article>
+                </div>
+            </section>
 
-                        <label class="admin-field">
-                            <span>Confirmar nueva contrasena</span>
-                            <input type="password" id="access-confirm-password" placeholder="Repite la nueva contrasena">
-                        </label>
+            <section class="admin-panel">
+                <div class="admin-panel-header">
+                    <div>
+                        <h2>Acceso local</h2>
+                        <p>Cambia la contraseña guardada en este navegador para este panel.</p>
                     </div>
+                </div>
 
-                    <div class="admin-toolbar">
-                        <button type="button" class="btn btn-primary" id="change-password">Actualizar contrasena</button>
-                    </div>
-                </section>
-
-                <section class="admin-panel">
-                    <div class="admin-panel-header">
-                        <div>
-                            <h2>Hero</h2>
-                            <p>Actualiza rapido el embed de Spotify y el video destacado de YouTube.</p>
-                        </div>
-                    </div>
-
-                    <div class="admin-grid admin-grid-two">
-                        <label class="admin-field">
-                            <span>Spotify URL</span>
-                            <input type="url" id="hero-spotify-url" placeholder="https://open.spotify.com/track/... o embed/...">
-                        </label>
-
-                        <label class="admin-field">
-                            <span>YouTube URL</span>
-                            <input type="url" id="hero-youtube-url" placeholder="https://youtu.be/...">
-                        </label>
-
-                        <label class="admin-field">
-                            <span>Titulo del video</span>
-                            <input type="text" id="hero-youtube-title" placeholder="Arrodillado a la Ventana - Camilo Suazo">
-                        </label>
-
-                        <label class="admin-field">
-                            <span>Thumbnail manual (opcional)</span>
-                            <input type="url" id="hero-youtube-thumbnail" placeholder="Si lo dejas vacio, se genera desde YouTube">
-                        </label>
-                    </div>
-                </section>
-
-                <section class="admin-panel">
-                    <div class="admin-panel-header">
-                        <div>
-                            <h2>Shows</h2>
-                            <p>Agrega fechas, lugar, mapa y publicacion del show. Si no hay fechas, se mostrara el estado vacio.</p>
-                        </div>
-                        <button type="button" class="btn btn-primary" id="add-show">Agregar show</button>
-                    </div>
-
-                    <div class="admin-grid admin-grid-two">
-                        <label class="admin-field">
-                            <span>Titulo estado vacio</span>
-                            <input type="text" id="shows-empty-title" placeholder="Fechas por confirmar">
-                        </label>
-
-                        <label class="admin-field">
-                            <span>Subtitulo estado vacio</span>
-                            <input type="text" id="shows-empty-subtitle" placeholder="Pronto anunciaremos nuevas presentaciones">
-                        </label>
-                    </div>
-
-                    <div class="admin-list" id="shows-editor"></div>
-                </section>
-
-                <section class="admin-panel">
-                    <div class="admin-panel-header">
-                        <div>
-                            <h2>Tienda</h2>
-                            <p>Agrega, elimina, oculta y marca productos como disponibles o no disponibles.</p>
-                        </div>
-                        <button type="button" class="btn btn-primary" id="add-product">Agregar producto</button>
-                    </div>
-
+                <div class="admin-grid admin-grid-two">
                     <label class="admin-field">
-                        <span>Nota bajo la tienda</span>
-                        <input type="text" id="store-note-input" placeholder="Texto bajo el grid de productos">
+                        <span>Contraseña actual</span>
+                        <input type="password" id="access-current-password" placeholder="Contraseña actual">
                     </label>
 
-                    <div class="admin-list" id="products-editor"></div>
-                </section>
-            </form>
+                    <label class="admin-field">
+                        <span>Nueva contraseña</span>
+                        <input type="password" id="access-new-password" placeholder="Nueva contraseña">
+                    </label>
+
+                    <label class="admin-field">
+                        <span>Confirmar nueva contraseña</span>
+                        <input type="password" id="access-confirm-password" placeholder="Repite la nueva contraseña">
+                    </label>
+                </div>
+
+                <div class="admin-toolbar">
+                    <button type="button" class="btn btn-primary" id="change-password">Actualizar contraseña</button>
+                </div>
+            </section>
         </main>
     </div>
-
-    <template id="show-item-template">
-        <article class="admin-item-card" data-item-type="show">
-            <div class="admin-item-header">
-                <div>
-                    <p class="admin-item-eyebrow">Show</p>
-                    <h3 class="admin-item-title">Nueva fecha</h3>
-                </div>
-                <div class="admin-item-actions">
-                    <button type="button" class="btn btn-secondary btn-small js-move-up">Subir</button>
-                    <button type="button" class="btn btn-secondary btn-small js-move-down">Bajar</button>
-                    <button type="button" class="btn btn-danger btn-small js-remove-item">Eliminar</button>
-                </div>
-            </div>
-
-            <div class="admin-grid admin-grid-two">
-                <label class="admin-field">
-                    <span>Fecha</span>
-                    <input type="date" data-field="date">
-                </label>
-
-                <label class="admin-field">
-                    <span>Lugar</span>
-                    <input type="text" data-field="venue" placeholder="Sala Master">
-                </label>
-
-                <label class="admin-field">
-                    <span>Ubicacion</span>
-                    <input type="text" data-field="location" placeholder="Santiago, Chile">
-                </label>
-
-                <label class="admin-field">
-                    <span>Link a Maps</span>
-                    <input type="url" data-field="mapUrl" placeholder="https://maps.google.com/...">
-                </label>
-
-                <label class="admin-field">
-                    <span>Link a publicacion</span>
-                    <input type="url" data-field="postUrl" placeholder="https://instagram.com/...">
-                </label>
-
-                <label class="admin-field">
-                    <span>Texto boton publicacion</span>
-                    <input type="text" data-field="postLabel" placeholder="Ver publicacion">
-                </label>
-            </div>
-
-            <label class="admin-field">
-                <span>Nota extra</span>
-                <input type="text" data-field="note" placeholder="Entrada liberada, 20:30 hrs, etc.">
-            </label>
-
-            <label class="admin-checkbox">
-                <input type="checkbox" data-field="visible" checked>
-                <span>Mostrar este show en el sitio</span>
-            </label>
-        </article>
-    </template>
-
-    <template id="product-item-template">
-        <article class="admin-item-card" data-item-type="product">
-            <div class="admin-item-header">
-                <div>
-                    <p class="admin-item-eyebrow">Producto</p>
-                    <h3 class="admin-item-title">Nuevo producto</h3>
-                </div>
-                <div class="admin-item-actions">
-                    <button type="button" class="btn btn-secondary btn-small js-move-up">Subir</button>
-                    <button type="button" class="btn btn-secondary btn-small js-move-down">Bajar</button>
-                    <button type="button" class="btn btn-danger btn-small js-remove-item">Eliminar</button>
-                </div>
-            </div>
-
-            <div class="admin-grid admin-grid-two">
-                <label class="admin-field">
-                    <span>Nombre</span>
-                    <input type="text" data-field="name" placeholder="Polera Hay huellas que ocultan">
-                </label>
-
-                <label class="admin-field">
-                    <span>Variante o subtitulo</span>
-                    <input type="text" data-field="variant" placeholder="Negro / Blanco">
-                </label>
-
-                <label class="admin-field">
-                    <span>Precio visible</span>
-                    <input type="text" data-field="priceLabel" placeholder="$10.000">
-                </label>
-
-                <label class="admin-field">
-                    <span>Etiqueta de disponibilidad</span>
-                    <input type="text" data-field="availabilityLabel" placeholder="Disponible o Proximamente">
-                </label>
-
-                <label class="admin-field">
-                    <span>Texto boton compra (opcional)</span>
-                    <input type="text" data-field="ctaLabel" placeholder="Comprar, Reservar, Consultar">
-                </label>
-
-                <label class="admin-field">
-                    <span>Link boton compra (opcional)</span>
-                    <input type="url" data-field="ctaUrl" placeholder="https://wa.me/... o formulario">
-                </label>
-            </div>
-
-            <label class="admin-field">
-                <span>Imagenes del producto</span>
-                <textarea data-field="images" rows="4" placeholder="Una URL o ruta por linea. Ejemplo:&#10;img/polera-negra.png&#10;img/polera-blanca.png"></textarea>
-            </label>
-
-            <div class="admin-grid admin-grid-two">
-                <label class="admin-checkbox">
-                    <input type="checkbox" data-field="available">
-                    <span>Marcar como disponible</span>
-                </label>
-
-                <label class="admin-checkbox">
-                    <input type="checkbox" data-field="visible" checked>
-                    <span>Mostrar este producto en el sitio</span>
-                </label>
-            </div>
-        </article>
-    </template>
 
     <script src="admin.js"></script>
 </body>

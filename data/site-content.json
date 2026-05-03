@@ -1,101 +1,765 @@
 {
-  "hero": {
-    "spotifyEmbedUrl": "https://open.spotify.com/embed/track/0INh7P4BbgFdpS2nJRW4yp?utm_source=generator&theme=0",
-    "youtubeUrl": "https://youtu.be/hyMw8920dbA",
-    "youtubeTitle": "Arrodillado a la Ventana - Camilo Suazo",
-    "youtubeThumbnailUrl": "https://img.youtube.com/vi/hyMw8920dbA/maxresdefault.jpg"
-  },
-  "shows": {
-    "emptyTitle": "Fechas por confirmar",
-    "emptySubtitle": "Pronto anunciaremos nuevas presentaciones",
-    "items": [
-      {
-        "id": "jardin-de-gente-2026-06-12",
-        "date": "2026-06-12",
-        "venue": "Jardin de Gente",
-        "location": "Grajales 2160, 8370171 Santiago, Region Metropolitana",
-        "mapUrl": "https://www.google.com/maps/search/?api=1&query=Grajales+2160%2C+8370171+Santiago%2C+Region+Metropolitana",
-        "postUrl": "",
-        "postLabel": "",
-        "note": "Viernes 12 de junio, 7:00 pm. Cafe y Espacio Cultural Jardin de Gente.",
-        "visible": true
+  "languages": [
+    "es",
+    "en"
+  ],
+  "defaultLanguage": "es",
+  "translations": {
+    "es": {
+      "site": {
+        "htmlLang": "es",
+        "locale": "es_CL",
+        "title": "Camilo Suazo | Analista de Datos e Ingeniero en Computación e Informática",
+        "description": "Portafolio profesional de Camilo Suazo, Analista de Datos e Ingeniero en Computación e Informática. Experiencia en análisis de datos, SQL, Python, reportería, automatización e inteligencia artificial aplicada.",
+        "keywords": "analista de datos, data analyst, SQL, Python, Power BI, inteligencia artificial aplicada, ingeniería en computación, business intelligence, data science, Chile",
+        "siteUrl": "https://camilosuazo.cl",
+        "ogImage": "https://camilosuazo.cl/favicon-512.png",
+        "themeColor": "#07111F",
+        "applicationName": "Camilo Suazo"
+      },
+      "nav": {
+        "home": "Inicio",
+        "about": "Sobre mí",
+        "work": "Qué hago",
+        "stack": "Stack",
+        "projects": "Proyectos",
+        "education": "Formación",
+        "contact": "Contacto",
+        "logoAriaLabel": "Ir al inicio",
+        "menuAriaLabel": "Abrir menú",
+        "languageSwitchLabel": "Cambiar idioma"
+      },
+      "hero": {
+        "eyebrow": "Portafolio profesional",
+        "name": "Camilo Suazo",
+        "headline": "Analista de Datos | Ingeniero en Computación e Informática",
+        "summary": "Transformo datos en información clara para apoyar decisiones, automatizar procesos y generar valor de negocio.",
+        "photoUrl": "assets/camilo-suazo-profile.png",
+        "photoAlt": "Camilo Suazo",
+        "photoCaption": "Las Condes, Región Metropolitana, Chile",
+        "panelAriaLabel": "Resumen profesional",
+        "signalsTitle": "Señales de valor",
+        "focus": [
+          "Python",
+          "SQL",
+          "Reporting",
+          "Visualización",
+          "Customer Analytics",
+          "VOC"
+        ],
+        "actions": [
+          {
+            "label": "Ver proyectos",
+            "href": "#proyectos",
+            "variant": "primary"
+          },
+          {
+            "label": "Contactar",
+            "href": "#contacto",
+            "variant": "secondary"
+          },
+          {
+            "label": "Descargar CV",
+            "href": "assets/cv-camilo-suazo-analista-datos-2026.pdf",
+            "variant": "secondary"
+          },
+          {
+            "label": "LinkedIn",
+            "href": "https://www.linkedin.com/in/camilosuazom/",
+            "variant": "secondary"
+          },
+          {
+            "label": "GitHub",
+            "href": "https://github.com/camilosuazo",
+            "variant": "secondary"
+          }
+        ],
+        "currentRole": "Analista de Datos",
+        "currentCompany": "SmartUp | Diciembre 2025 - Actualidad",
+        "currentSummary": "Participo en proyectos de conversational analytics y Voice of the Customer, trabajando con Python, SQL, Excel y visualización para preparar datos, generar reportes y apoyar decisiones.",
+        "signals": [
+          {
+            "label": "Datos y calidad",
+            "value": "JSON, JSONL, Excel y Python"
+          },
+          {
+            "label": "Analítica conversacional",
+            "value": "VOC, taxonomías y precisión"
+          },
+          {
+            "label": "Proyección",
+            "value": "Data Science aplicada e IA"
+          }
+        ]
+      },
+      "about": {
+        "eyebrow": "Sobre mí",
+        "title": "Perfil orientado a datos, negocio y mejora continua",
+        "summaryTitle": "Resumen profesional",
+        "growthTitle": "Intereses de crecimiento",
+        "paragraphs": [
+          "Soy Analista de Datos e Ingeniero en Computación e Informática, con experiencia en análisis, transformación y automatización de datos para proyectos de banca, telecomunicaciones y servicios.",
+          "Actualmente me desempeño en SmartUp, participando en proyectos de análisis conversacional y Voice of the Customer. Trabajo con Python, SQL, Excel y herramientas de visualización para preparar datos, generar reportes y apoyar la toma de decisiones con evidencia clara.",
+          "Me proyecto hacia roles de Data Scientist aplicado y Analytics Engineer, mientras sigo profundizando en inteligencia artificial aplicada, machine learning y analítica avanzada. Me interesa combinar capacidad técnica, pensamiento analítico y comunicación clara con stakeholders."
+        ],
+        "highlights": [
+          {
+            "label": "Rol actual",
+            "value": "Analista de Datos en SmartUp"
+          },
+          {
+            "label": "Base técnica",
+            "value": "Ingeniería en Computación e Informática"
+          },
+          {
+            "label": "Inglés",
+            "value": "Intermedio alto (Proficiency Level 16)"
+          },
+          {
+            "label": "Diferencial",
+            "value": "Pensamiento analítico, comunicación efectiva y aprendizaje continuo"
+          }
+        ],
+        "growthInterests": [
+          "Data Scientist aplicado",
+          "Analytics Engineer",
+          "IA aplicada al negocio",
+          "Machine Learning",
+          "Análisis avanzado"
+        ]
+      },
+      "work": {
+        "eyebrow": "Qué hago",
+        "title": "Análisis, automatización y claridad para equipos de negocio",
+        "intro": "Trabajo en problemas donde los datos deben traducirse en lectura crítica, decisiones útiles y procesos más eficientes.",
+        "items": [
+          {
+            "title": "Análisis de datos",
+            "description": "Exploración, limpieza, transformación y lectura crítica de datos para identificar patrones, hallazgos operativos y oportunidades de mejora."
+          },
+          {
+            "title": "Reportería y visualización",
+            "description": "Generación de reportes analíticos con evidencia conversacional, métricas de precisión y resúmenes claros para equipos de negocio."
+          },
+          {
+            "title": "Automatización con Python",
+            "description": "Limpieza, transformación y normalización de datos en JSON, JSONL y Excel mediante scripts reproducibles con Pandas."
+          },
+          {
+            "title": "SQL y bases de datos",
+            "description": "Consultas, joins, agrupaciones y análisis exploratorio sobre bases relacionales para responder preguntas concretas de negocio."
+          },
+          {
+            "title": "IA aplicada y modelos de lenguaje",
+            "description": "Evaluación de categorizaciones, análisis de transcripciones, validación de taxonomías multinivel y revisión de calidad de clasificación."
+          },
+          {
+            "title": "Comunicación de insights",
+            "description": "Explicación clara de resultados técnicos para personas no técnicas, con foco en contexto, acción y alineación con stakeholders."
+          }
+        ]
+      },
+      "stack": {
+        "eyebrow": "Stack",
+        "title": "Herramientas con foco aplicado",
+        "intro": "Trabajo con un stack práctico para análisis, visualización, reportería y automatización.",
+        "groups": [
+          {
+            "title": "Lenguajes y análisis",
+            "items": [
+              "Python",
+              "SQL",
+              "R",
+              "Pandas",
+              "NumPy",
+              "Estadística aplicada"
+            ]
+          },
+          {
+            "title": "Visualización y reportería",
+            "items": [
+              "Power BI",
+              "Tableau",
+              "Excel",
+              "Matplotlib",
+              "Seaborn",
+              "Reportes ejecutivos"
+            ]
+          },
+          {
+            "title": "Bases de datos",
+            "items": [
+              "PostgreSQL",
+              "Modelado relacional básico",
+              "Consultas agrupadas",
+              "Joins",
+              "Subconsultas"
+            ]
+          },
+          {
+            "title": "IA y automatización",
+            "items": [
+              "LLMs",
+              "Prompting",
+              "Evaluación de modelos",
+              "Automatización de reportes",
+              "Procesamiento de transcripciones"
+            ]
+          },
+          {
+            "title": "Herramientas de trabajo",
+            "items": [
+              "Git / GitHub",
+              "Google Colab",
+              "Jupyter Notebook",
+              "Notion",
+              "VS Code"
+            ]
+          }
+        ]
+      },
+      "projects": {
+        "eyebrow": "Proyectos",
+        "title": "Trabajo aplicado y portafolio en desarrollo",
+        "intro": "Portafolio en construcción con proyectos orientados a análisis, automatización y resolución de problemas de negocio con datos.",
+        "items": [
+          {
+            "title": "Predicción de abandono de clientes (Churn)",
+            "description": "Proyecto en desarrollo orientado a analizar datos de clientes bancarios para entender patrones de cancelación de servicios y entrenar un modelo de clasificación para predecir churn.",
+            "tech": [
+              "Python",
+              "Pandas",
+              "Scikit-learn",
+              "Visualización de datos"
+            ],
+            "ctaLabel": "Próximamente",
+            "ctaUrl": "",
+            "status": "Proyecto aplicado"
+          },
+          {
+            "title": "Nexus - Plataforma interna de analítica y visualización",
+            "description": "Participación en el desarrollo y fortalecimiento de una plataforma multi-tenant orientada a visualización de datos e insights por cliente, incorporando mejoras de seguridad, autenticación y control de acceso.",
+            "tech": [
+              "JavaScript",
+              "Node.js",
+              "Express",
+              "Auth0",
+              "SQLite / PostgreSQL",
+              "Docker",
+              "Kubernetes"
+            ],
+            "ctaLabel": "Próximamente",
+            "ctaUrl": "",
+            "status": "Producto interno"
+          },
+          {
+            "title": "Evaluación de categorizaciones con modelos de lenguaje",
+            "description": "Análisis comparativo de resultados generados por modelos de lenguaje sobre transcripciones de call center, midiendo coincidencia, errores, categorías faltantes y calidad de clasificación.",
+            "tech": [
+              "Python",
+              "Pandas",
+              "LLMs",
+              "Análisis de texto",
+              "Métricas de evaluación"
+            ],
+            "ctaLabel": "Próximamente",
+            "ctaUrl": "",
+            "status": "Analítica conversacional"
+          },
+          {
+            "title": "Normalización y preparación de datasets conversacionales",
+            "description": "Procesos de limpieza, transformación y estandarización de datos en formatos JSON, JSONL y Excel para análisis, validación de taxonomías y reportería analítica.",
+            "tech": [
+              "Python",
+              "Pandas",
+              "JSON / JSONL",
+              "Excel"
+            ],
+            "ctaLabel": "Próximamente",
+            "ctaUrl": "",
+            "status": "Automatización"
+          }
+        ]
+      },
+      "education": {
+        "eyebrow": "Formación",
+        "title": "Base técnica y aprendizaje continuo",
+        "intro": "Mi formación combina una base formal en Ingeniería en Computación e Informática con especialización práctica en análisis de datos, SQL, Python, estadística, machine learning e inteligencia artificial aplicada.",
+        "items": [
+          {
+            "title": "Ingeniería en Computación e Informática - Universidad Andrés Bello",
+            "meta": "Marzo 2023 - Septiembre 2025",
+            "description": "Base formal en programación, lógica, estructuras de datos y fundamentos técnicos para construir soluciones."
+          },
+          {
+            "title": "Certificaciones relevantes",
+            "meta": "Coursera",
+            "description": "Google Data Analytics Professional Certificate (2025), IBM Data Science Professional Certificate (2024) e IBM AI Developer Professional Certificate (2025)."
+          },
+          {
+            "title": "Formación complementaria en análisis de datos",
+            "meta": "Especialización continua",
+            "description": "Cursos aplicados como Data Analysis with Python y Databases and SQL for Data Science, enfocados en trabajo práctico con datos."
+          },
+          {
+            "title": "Data Science Bootcamp en curso",
+            "meta": "Desarrollo profesional",
+            "description": "Fortalecimiento de SQL, Python, estadística, machine learning, visualización e IA mediante estudio continuo y proyectos aplicados."
+          }
+        ]
+      },
+      "approach": {
+        "eyebrow": "Mi enfoque",
+        "title": "Análisis con contexto, claridad y reproducibilidad",
+        "intro": "Mi enfoque no se limita a procesar datos: busco entender el contexto, formular buenas preguntas y comunicar resultados de manera clara. Me interesa que cada análisis pueda traducirse en una decisión, una mejora o una conversación útil para el negocio.",
+        "items": [
+          {
+            "title": "Datos con sentido de negocio",
+            "description": "Priorizar preguntas útiles, contexto y acción por sobre la producción de indicadores aislados."
+          },
+          {
+            "title": "Análisis reproducible",
+            "description": "Procesos ordenados, trazables y fáciles de mantener cuando una necesidad vuelve a aparecer."
+          },
+          {
+            "title": "Comunicación clara",
+            "description": "Traducir resultados técnicos en mensajes entendibles para equipos y liderazgos no técnicos, con una mirada pedagógica aplicada."
+          },
+          {
+            "title": "Aprendizaje continuo",
+            "description": "Actualizar criterio técnico y metodológico de forma constante, con foco en Data Science, IA aplicada y uso real en negocio."
+          },
+          {
+            "title": "IA como apoyo estratégico",
+            "description": "Usar modelos de lenguaje para acelerar y ampliar el análisis, sin reemplazar criterio, validación ni responsabilidad analítica."
+          }
+        ]
+      },
+      "contact": {
+        "eyebrow": "Contacto",
+        "title": "Conversemos",
+        "text": "Estoy abierto a oportunidades profesionales, colaboración en proyectos de datos y conversaciones sobre análisis, automatización, Data Science e inteligencia artificial aplicada.",
+        "formTitle": "Mensaje directo",
+        "submitLabel": "Enviar mensaje",
+        "sendingLabel": "Enviando...",
+        "openLabel": "Abrir",
+        "readyLabel": "Disponible",
+        "fields": {
+          "nameLabel": "Nombre",
+          "namePlaceholder": "Tu nombre",
+          "emailLabel": "Email",
+          "emailPlaceholder": "tu@email.com",
+          "messageLabel": "Mensaje",
+          "messagePlaceholder": "Cuéntame sobre la oportunidad, proyecto o consulta."
+        },
+        "formAction": "https://formspree.io/f/mdadzald",
+        "formSubject": "Nuevo mensaje desde camilosuazo.cl",
+        "email": "camilosuazo.melendez@gmail.com",
+        "location": "Las Condes, Región Metropolitana, Chile",
+        "links": [
+          {
+            "label": "Email",
+            "href": "mailto:camilosuazo.melendez@gmail.com",
+            "description": "Contacto directo para oportunidades y colaboraciones."
+          },
+          {
+            "label": "GitHub",
+            "href": "https://github.com/camilosuazo",
+            "description": "Repositorio y proyectos técnicos."
+          },
+          {
+            "label": "LinkedIn",
+            "href": "https://www.linkedin.com/in/camilosuazom/",
+            "description": "Perfil profesional actualizado con experiencia, certificaciones y foco en datos."
+          },
+          {
+            "label": "Descargar CV",
+            "href": "assets/cv-camilo-suazo-analista-datos-2026.pdf",
+            "description": "Versión PDF actualizada de mi CV profesional."
+          }
+        ]
+      },
+      "footer": {
+        "text": "Camilo Suazo - Analista de Datos / Ingeniero en Computación e Informática"
       }
-    ]
-  },
-  "store": {
-    "note": "Síguenos en redes sociales para enterarte cuando estén disponibles",
-    "products": [
-      {
-        "id": "polera-huellas",
-        "name": "Polera \"Hay huellas que ocultan\"",
-        "variant": "Negro / Blanco",
-        "priceLabel": "$10.000",
-        "availabilityLabel": "Próximamente",
-        "available": false,
-        "visible": true,
-        "images": [
-          "img/polera-negra.png",
-          "img/polera-blanca.png"
-        ],
-        "ctaLabel": "",
-        "ctaUrl": ""
+    },
+    "en": {
+      "site": {
+        "htmlLang": "en",
+        "locale": "en_US",
+        "title": "Camilo Suazo | Data Analyst & Computer Engineering Graduate",
+        "description": "Professional portfolio of Camilo Suazo, Data Analyst and Computer Engineering graduate. Experience in data analysis, SQL, Python, reporting, automation, and applied artificial intelligence.",
+        "keywords": "data analyst, SQL, Python, Power BI, applied artificial intelligence, computer engineering, business intelligence, data science, Chile",
+        "siteUrl": "https://camilosuazo.cl",
+        "ogImage": "https://camilosuazo.cl/favicon-512.png",
+        "themeColor": "#07111F",
+        "applicationName": "Camilo Suazo"
       },
-      {
-        "id": "disco-envio",
-        "name": "Disco \"Envío\"",
-        "variant": "CD Físico",
-        "priceLabel": "$12.000",
-        "availabilityLabel": "Próximamente",
-        "available": false,
-        "visible": true,
-        "images": [
-          "img/disco-envio.png"
-        ],
-        "ctaLabel": "",
-        "ctaUrl": ""
+      "nav": {
+        "home": "Home",
+        "about": "About",
+        "work": "What I do",
+        "stack": "Stack",
+        "projects": "Projects",
+        "education": "Education",
+        "contact": "Contact",
+        "logoAriaLabel": "Go to home",
+        "menuAriaLabel": "Open menu",
+        "languageSwitchLabel": "Switch language"
       },
-      {
-        "id": "taza-pajaro-azul",
-        "name": "Taza \"Pájaro Azul\"",
-        "variant": "Cerámica",
-        "priceLabel": "$8.000",
-        "availabilityLabel": "Próximamente",
-        "available": false,
-        "visible": true,
-        "images": [
-          "img/taza.png"
+      "hero": {
+        "eyebrow": "Professional portfolio",
+        "name": "Camilo Suazo",
+        "headline": "Data Analyst | Computer Engineering & Informatics",
+        "summary": "I turn data into clear information to support decisions, automate processes, and create business value.",
+        "photoUrl": "assets/camilo-suazo-profile.png",
+        "photoAlt": "Camilo Suazo",
+        "photoCaption": "Las Condes, Metropolitan Region, Chile",
+        "panelAriaLabel": "Professional summary",
+        "signalsTitle": "Value signals",
+        "focus": [
+          "Python",
+          "SQL",
+          "Reporting",
+          "Visualization",
+          "Customer Analytics",
+          "VOC"
         ],
-        "ctaLabel": "",
-        "ctaUrl": ""
+        "actions": [
+          {
+            "label": "View projects",
+            "href": "#proyectos",
+            "variant": "primary"
+          },
+          {
+            "label": "Contact",
+            "href": "#contacto",
+            "variant": "secondary"
+          },
+          {
+            "label": "Download CV",
+            "href": "assets/cv-camilo-suazo-analista-datos-2026.pdf",
+            "variant": "secondary"
+          },
+          {
+            "label": "LinkedIn",
+            "href": "https://www.linkedin.com/in/camilosuazom/",
+            "variant": "secondary"
+          },
+          {
+            "label": "GitHub",
+            "href": "https://github.com/camilosuazo",
+            "variant": "secondary"
+          }
+        ],
+        "currentRole": "Data Analyst",
+        "currentCompany": "SmartUp | December 2025 - Present",
+        "currentSummary": "I work on conversational analytics and Voice of the Customer projects using Python, SQL, Excel, and visualization to prepare data, build reports, and support decision-making.",
+        "signals": [
+          {
+            "label": "Data quality",
+            "value": "JSON, JSONL, Excel, and Python"
+          },
+          {
+            "label": "Conversational analytics",
+            "value": "VOC, taxonomies, and precision"
+          },
+          {
+            "label": "Career direction",
+            "value": "Applied Data Science and AI"
+          }
+        ]
       },
-      {
-        "id": "totebag-fui-pa-temuco",
-        "name": "Tote Bag \"Fui pa Temuco\"",
-        "variant": "Tela algodón",
-        "priceLabel": "$7.000",
-        "availabilityLabel": "Próximamente",
-        "available": false,
-        "visible": true,
-        "images": [
-          "img/totebag.png"
+      "about": {
+        "eyebrow": "About",
+        "title": "A profile shaped by data, business context, and continuous growth",
+        "summaryTitle": "Professional snapshot",
+        "growthTitle": "Growth areas",
+        "paragraphs": [
+          "I am a Data Analyst and Computer Engineering graduate with experience in data analysis, transformation, and automation for banking, telecommunications, and services projects.",
+          "I currently work at SmartUp on conversational analytics and Voice of the Customer initiatives. I use Python, SQL, Excel, and visualization tools to prepare data, build reports, and support decision-making with clear evidence.",
+          "I see my career growing toward applied Data Scientist and Analytics Engineer roles while continuing to learn more about applied AI, machine learning, and advanced analytics. I aim to combine technical skill, analytical thinking, and clear stakeholder communication."
         ],
-        "ctaLabel": "",
-        "ctaUrl": ""
+        "highlights": [
+          {
+            "label": "Current role",
+            "value": "Data Analyst at SmartUp"
+          },
+          {
+            "label": "Technical foundation",
+            "value": "Computer Engineering & Informatics"
+          },
+          {
+            "label": "English",
+            "value": "Upper-intermediate (Proficiency Level 16)"
+          },
+          {
+            "label": "Strengths",
+            "value": "Analytical thinking, effective communication, and continuous learning"
+          }
+        ],
+        "growthInterests": [
+          "Applied Data Scientist",
+          "Analytics Engineer",
+          "Applied AI for business",
+          "Machine Learning",
+          "Advanced analytics"
+        ]
       },
-      {
-        "id": "libreta-pajaro-azul",
-        "name": "Libreta \"Pájaro Azul\"",
-        "variant": "Tapa dura con elástico",
-        "priceLabel": "$6.000",
-        "availabilityLabel": "Próximamente",
-        "available": false,
-        "visible": true,
-        "images": [
-          "img/libreta.png"
-        ],
-        "ctaLabel": "",
-        "ctaUrl": ""
+      "work": {
+        "eyebrow": "What I do",
+        "title": "Analysis, automation, and clarity for business teams",
+        "intro": "I work on problems where data needs to become critical insight, useful decisions, and more efficient processes.",
+        "items": [
+          {
+            "title": "Data analysis",
+            "description": "Exploration, cleaning, transformation, and critical reading of data to identify patterns, operational findings, and improvement opportunities."
+          },
+          {
+            "title": "Reporting and visualization",
+            "description": "Analytical reporting with conversational evidence, precision metrics, and clear summaries for business teams."
+          },
+          {
+            "title": "Python automation",
+            "description": "Cleaning, transformation, and normalization of JSON, JSONL, and Excel data through reproducible Pandas-based workflows."
+          },
+          {
+            "title": "SQL and databases",
+            "description": "Queries, joins, aggregations, and exploratory analysis on relational data to answer concrete business questions."
+          },
+          {
+            "title": "Applied AI and language models",
+            "description": "Evaluation of categorizations, transcript analysis, multi-level taxonomy validation, and classification quality review."
+          },
+          {
+            "title": "Insight communication",
+            "description": "Clear explanation of technical results for non-technical audiences, with focus on context, action, and alignment."
+          }
+        ]
+      },
+      "stack": {
+        "eyebrow": "Stack",
+        "title": "Practical tools for applied analytics",
+        "intro": "I work with a practical stack for analysis, visualization, reporting, and automation.",
+        "groups": [
+          {
+            "title": "Programming and analysis",
+            "items": [
+              "Python",
+              "SQL",
+              "R",
+              "Pandas",
+              "NumPy",
+              "Applied statistics"
+            ]
+          },
+          {
+            "title": "Visualization and reporting",
+            "items": [
+              "Power BI",
+              "Tableau",
+              "Excel",
+              "Matplotlib",
+              "Seaborn",
+              "Executive reporting"
+            ]
+          },
+          {
+            "title": "Databases",
+            "items": [
+              "PostgreSQL",
+              "Basic relational modeling",
+              "Grouped queries",
+              "Joins",
+              "Subqueries"
+            ]
+          },
+          {
+            "title": "AI and automation",
+            "items": [
+              "LLMs",
+              "Prompting",
+              "Model evaluation",
+              "Report automation",
+              "Transcript processing"
+            ]
+          },
+          {
+            "title": "Work tools",
+            "items": [
+              "Git / GitHub",
+              "Google Colab",
+              "Jupyter Notebook",
+              "Notion",
+              "VS Code"
+            ]
+          }
+        ]
+      },
+      "projects": {
+        "eyebrow": "Projects",
+        "title": "Applied work and portfolio in progress",
+        "intro": "A growing portfolio focused on analysis, automation, and business problem solving through data.",
+        "items": [
+          {
+            "title": "Customer churn prediction",
+            "description": "An in-progress project focused on banking customer data to understand service cancellation patterns and train a classification model to predict churn.",
+            "tech": [
+              "Python",
+              "Pandas",
+              "Scikit-learn",
+              "Data visualization"
+            ],
+            "ctaLabel": "Coming soon",
+            "ctaUrl": "",
+            "status": "Applied project"
+          },
+          {
+            "title": "Nexus - Internal analytics and visualization platform",
+            "description": "Contribution to the development and strengthening of a multi-tenant platform focused on data visualization and client-specific insights, including security, authentication, and access control improvements.",
+            "tech": [
+              "JavaScript",
+              "Node.js",
+              "Express",
+              "Auth0",
+              "SQLite / PostgreSQL",
+              "Docker",
+              "Kubernetes"
+            ],
+            "ctaLabel": "Coming soon",
+            "ctaUrl": "",
+            "status": "Internal product"
+          },
+          {
+            "title": "Evaluation of language-model categorizations",
+            "description": "Comparative analysis of language-model outputs on call-center transcripts, measuring agreement, errors, missing categories, and classification quality.",
+            "tech": [
+              "Python",
+              "Pandas",
+              "LLMs",
+              "Text analysis",
+              "Evaluation metrics"
+            ],
+            "ctaLabel": "Coming soon",
+            "ctaUrl": "",
+            "status": "Conversational analytics"
+          },
+          {
+            "title": "Conversational dataset normalization and preparation",
+            "description": "Cleaning, transformation, and standardization workflows for JSON, JSONL, and Excel datasets used for analysis, taxonomy validation, and analytical reporting.",
+            "tech": [
+              "Python",
+              "Pandas",
+              "JSON / JSONL",
+              "Excel"
+            ],
+            "ctaLabel": "Coming soon",
+            "ctaUrl": "",
+            "status": "Automation"
+          }
+        ]
+      },
+      "education": {
+        "eyebrow": "Education",
+        "title": "Technical foundation and continuous learning",
+        "intro": "My background combines formal training in Computer Engineering with hands-on specialization in data analysis, SQL, Python, statistics, machine learning, and applied AI.",
+        "items": [
+          {
+            "title": "Computer Engineering & Informatics - Universidad Andrés Bello",
+            "meta": "March 2023 - September 2025",
+            "description": "Formal foundation in programming, logic, data structures, and technical fundamentals for building solutions."
+          },
+          {
+            "title": "Relevant certifications",
+            "meta": "Coursera",
+            "description": "Google Data Analytics Professional Certificate (2025), IBM Data Science Professional Certificate (2024), and IBM AI Developer Professional Certificate (2025)."
+          },
+          {
+            "title": "Complementary training in data analysis",
+            "meta": "Ongoing specialization",
+            "description": "Applied courses such as Data Analysis with Python and Databases and SQL for Data Science, focused on hands-on work with data."
+          },
+          {
+            "title": "Ongoing Data Science Bootcamp",
+            "meta": "Professional development",
+            "description": "Continued growth in SQL, Python, statistics, machine learning, visualization, and AI through study and applied projects."
+          }
+        ]
+      },
+      "approach": {
+        "eyebrow": "My approach",
+        "title": "Analysis with context, clarity, and reproducibility",
+        "intro": "My approach goes beyond processing data: I aim to understand context, ask better questions, and communicate results clearly. I want every analysis to support a decision, an improvement, or a useful business conversation.",
+        "items": [
+          {
+            "title": "Business-centered data work",
+            "description": "Prioritizing useful questions, context, and action over isolated metrics."
+          },
+          {
+            "title": "Reproducible analysis",
+            "description": "Organized and traceable processes that are easier to maintain when the same need returns."
+          },
+          {
+            "title": "Clear communication",
+            "description": "Translating technical results into understandable messages for non-technical teams and leadership."
+          },
+          {
+            "title": "Continuous learning",
+            "description": "Constantly updating technical and analytical judgment with focus on Data Science, applied AI, and real business use cases."
+          },
+          {
+            "title": "AI as strategic support",
+            "description": "Using language models to accelerate and extend analysis without replacing judgment, validation, or analytical responsibility."
+          }
+        ]
+      },
+      "contact": {
+        "eyebrow": "Contact",
+        "title": "Let's talk",
+        "text": "I am open to professional opportunities, data collaborations, and conversations about analytics, automation, Data Science, and applied artificial intelligence.",
+        "formTitle": "Direct message",
+        "submitLabel": "Send message",
+        "sendingLabel": "Sending...",
+        "openLabel": "Open",
+        "readyLabel": "Ready",
+        "fields": {
+          "nameLabel": "Name",
+          "namePlaceholder": "Your name",
+          "emailLabel": "Email",
+          "emailPlaceholder": "you@email.com",
+          "messageLabel": "Message",
+          "messagePlaceholder": "Tell me about the opportunity, project, or question."
+        },
+        "formAction": "https://formspree.io/f/mdadzald",
+        "formSubject": "New message from camilosuazo.cl",
+        "email": "camilosuazo.melendez@gmail.com",
+        "location": "Las Condes, Metropolitan Region, Chile",
+        "links": [
+          {
+            "label": "Email",
+            "href": "mailto:camilosuazo.melendez@gmail.com",
+            "description": "Direct contact for opportunities and collaborations."
+          },
+          {
+            "label": "GitHub",
+            "href": "https://github.com/camilosuazo",
+            "description": "Repositories and technical projects."
+          },
+          {
+            "label": "LinkedIn",
+            "href": "https://www.linkedin.com/in/camilosuazom/",
+            "description": "Updated profile with experience, certifications, and a data-focused career path."
+          },
+          {
+            "label": "Download CV",
+            "href": "assets/cv-camilo-suazo-analista-datos-2026.pdf",
+            "description": "Updated PDF version of my professional CV."
+          }
+        ]
+      },
+      "footer": {
+        "text": "Camilo Suazo - Data Analyst / Computer Engineering & Informatics"
       }
-    ]
+    }
   }
 }

@@ -1,8 +1,14 @@
 const CONTENT_URL = 'data/site-content.json';
+const LANGUAGE_STORAGE_KEY = 'camilo-suazo-site-language';
 
 let siteContentCache = null;
 let sectionObserver = null;
-let lightboxController = null;
+let currentLanguage = 'es';
+let contactUiState = {
+    sendingLabel: 'Enviando...',
+    openLabel: 'Abrir',
+    readyLabel: 'Preparado'
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     initEventModal();
@@ -10,9 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initScrollAnimations();
     initContactForm();
-    initHeroParallax();
-    initLightbox();
-    initProductGalleries();
+    setFooterYear();
     loadAndRenderSiteContent();
 });
 
@@ -54,12 +58,11 @@ function initEventModal() {
 async function loadAndRenderSiteContent() {
     try {
         const siteContent = await loadSiteContent();
-        renderHeroContent(siteContent.hero || {});
-        renderShows(siteContent.shows || {});
-        renderStore(siteContent.store || {});
-        observeAnimatedElements(document);
+        currentLanguage = resolveInitialLanguage(siteContent);
+        renderLanguageSwitch(siteContent);
+        renderCurrentLanguage(siteContent);
     } catch (error) {
-        console.warn('No se pudo cargar el contenido editable del sitio.', error);
+        console.warn('No se pudo cargar el contenido del sitio.', error);
     }
 }
 
@@ -77,23 +80,171 @@ async function loadSiteContent(force = false) {
     return siteContentCache;
 }
 
+function resolveInitialLanguage(siteContent) {
+    const availableLanguages = getAvailableLanguages(siteContent);
+    const storedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
+
+    if (storedLanguage && availableLanguages.includes(storedLanguage)) {
+        return storedLanguage;
+    }
+
+    if (availableLanguages.includes(siteContent.defaultLanguage)) {
+        return siteContent.defaultLanguage;
+    }
+
+    return availableLanguages[0] || 'es';
+}
+
+function getAvailableLanguages(siteContent) {
+    if (Array.isArray(siteContent.languages) && siteContent.languages.length) {
+        return siteContent.languages;
+    }
+
+    if (siteContent.translations && typeof siteContent.translations === 'object') {
+        return Object.keys(siteContent.translations);
+    }
+
+    return ['es'];
+}
+
+function getTranslation(siteContent, language = currentLanguage) {
+    if (!siteContent.translations) {
+        return siteContent;
+    }
+
+    return siteContent.translations[language]
+        || siteContent.translations[siteContent.defaultLanguage]
+        || siteContent.translations[Object.keys(siteContent.translations)[0]]
+        || {};
+}
+
+function renderCurrentLanguage(siteContent) {
+    const content = getTranslation(siteContent, currentLanguage);
+
+    applySiteMetadata(content.site || {});
+    renderLanguageSwitch(siteContent);
+    renderNavigation(content.nav || {});
+    renderHero(content.hero || {});
+    renderAbout(content.about || {});
+    renderWork(content.work || {});
+    renderStack(content.stack || {});
+    renderProjects(content.projects || {});
+    renderEducation(content.education || {});
+    renderApproach(content.approach || {});
+    renderContact(content.contact || {});
+    renderFooter(content.footer || {});
+    observeAnimatedElements(document);
+    window.requestAnimationFrame(() => {
+        window.dispatchEvent(new Event('scroll'));
+    });
+}
+
+function applySiteMetadata(site) {
+    if (site.title) {
+        document.title = site.title;
+        updateMetaTag('meta[property="og:title"]', site.title);
+        updateMetaTag('meta[name="twitter:title"]', site.title);
+    }
+
+    if (site.description) {
+        updateMetaTag('meta[name="description"]', site.description);
+        updateMetaTag('meta[property="og:description"]', site.description);
+        updateMetaTag('meta[name="twitter:description"]', site.description);
+    }
+
+    if (site.keywords) {
+        updateMetaTag('meta[name="keywords"]', site.keywords);
+    }
+
+    if (site.applicationName) {
+        updateMetaTag('meta[name="application-name"]', site.applicationName);
+    }
+
+    if (site.themeColor) {
+        updateMetaTag('meta[name="theme-color"]', site.themeColor);
+    }
+
+    if (site.locale) {
+        updateMetaTag('meta[property="og:locale"]', site.locale);
+    }
+
+    if (site.siteUrl) {
+        updateMetaTag('meta[property="og:url"]', site.siteUrl);
+        const canonicalLink = document.querySelector('link[rel="canonical"]');
+        if (canonicalLink) {
+            canonicalLink.href = site.siteUrl;
+        }
+    }
+
+    if (site.ogImage) {
+        updateMetaTag('meta[property="og:image"]', site.ogImage);
+    }
+
+    if (site.htmlLang) {
+        document.documentElement.lang = site.htmlLang;
+    }
+}
+
+function updateMetaTag(selector, value) {
+    const element = document.querySelector(selector);
+    if (element && value) {
+        element.setAttribute('content', value);
+    }
+}
+
+function renderLanguageSwitch(siteContent) {
+    const languageSwitch = document.getElementById('lang-switch');
+    if (!languageSwitch) {
+        return;
+    }
+
+    const availableLanguages = getAvailableLanguages(siteContent);
+    const content = getTranslation(siteContent, currentLanguage);
+    const label = content.nav?.languageSwitchLabel || 'Language switch';
+
+    languageSwitch.setAttribute('aria-label', label);
+    languageSwitch.innerHTML = availableLanguages.map((language) => `
+        <button
+            type="button"
+            class="lang-button${language === currentLanguage ? ' is-active' : ''}"
+            data-language="${escapeAttr(language)}"
+            aria-pressed="${language === currentLanguage ? 'true' : 'false'}"
+        >
+            ${escapeHtml(language.toUpperCase())}
+        </button>
+    `).join('');
+
+    languageSwitch.querySelectorAll('.lang-button').forEach((button) => {
+        button.addEventListener('click', () => {
+            const nextLanguage = button.dataset.language;
+            if (!nextLanguage || nextLanguage === currentLanguage) {
+                return;
+            }
+
+            currentLanguage = nextLanguage;
+            window.localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLanguage);
+            renderCurrentLanguage(siteContentCache);
+        });
+    });
+}
+
 function initNavbar() {
     const navbar = document.getElementById('navbar');
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section[id]');
 
-    window.addEventListener('scroll', () => {
+    function updateActiveSection() {
+        const sections = document.querySelectorAll('section[id]');
         const currentScroll = window.pageYOffset;
 
         if (navbar) {
-            navbar.classList.toggle('scrolled', currentScroll > 50);
+            navbar.classList.toggle('scrolled', currentScroll > 24);
         }
 
         sections.forEach((section) => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100;
+            const sectionTop = section.offsetTop - 140;
+            const sectionBottom = sectionTop + section.offsetHeight;
             const sectionId = section.getAttribute('id');
             const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
 
@@ -101,15 +252,22 @@ function initNavbar() {
                 return;
             }
 
-            const isActive = currentScroll > sectionTop && currentScroll <= sectionTop + sectionHeight;
+            const isActive = currentScroll >= sectionTop && currentScroll < sectionBottom;
             navLink.classList.toggle('active', isActive);
         });
-    });
+    }
+
+    window.addEventListener('scroll', updateActiveSection);
+    window.addEventListener('resize', updateActiveSection);
+    window.addEventListener('load', updateActiveSection);
+    updateActiveSection();
 
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
+            const isOpen = navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active', isOpen);
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+            document.body.classList.toggle('menu-open', isOpen);
         });
     }
 
@@ -121,22 +279,38 @@ function initNavbar() {
 
             navToggle.classList.remove('active');
             navMenu.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('menu-open');
         });
     });
+}
+
+function renderNavigation(nav) {
+    setText('nav-home', nav.home);
+    setText('nav-about', nav.about);
+    setText('nav-work', nav.work);
+    setText('nav-stack', nav.stack);
+    setText('nav-projects', nav.projects);
+    setText('nav-education', nav.education);
+    setText('nav-contact', nav.contact);
+
+    setAttributeValue('nav-logo', 'aria-label', nav.logoAriaLabel);
+    setAttributeValue('nav-toggle', 'aria-label', nav.menuAriaLabel);
 }
 
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener('click', function onClick(event) {
-            const target = document.querySelector(this.getAttribute('href'));
+            const targetSelector = this.getAttribute('href');
+            const target = document.querySelector(targetSelector);
+
             if (!target) {
                 return;
             }
 
             event.preventDefault();
-            const headerOffset = 80;
-            const elementPosition = target.offsetTop;
-            const offsetPosition = elementPosition - headerOffset;
+            const headerOffset = 88;
+            const offsetPosition = target.offsetTop - headerOffset;
 
             window.scrollTo({
                 top: offsetPosition,
@@ -147,33 +321,48 @@ function initSmoothScroll() {
 }
 
 function initScrollAnimations() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion || typeof IntersectionObserver === 'undefined') {
+        document.querySelectorAll('.reveal').forEach((element) => {
+            element.classList.add('visible');
+        });
+        return;
+    }
+
     sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                sectionObserver.unobserve(entry.target);
             }
         });
     }, {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
+        rootMargin: '0px 0px -8% 0px',
+        threshold: 0.12
     });
 
     observeAnimatedElements(document);
 }
 
 function observeAnimatedElements(scope) {
-    if (!sectionObserver) {
+    const elements = scope.querySelectorAll('.reveal');
+    if (!elements.length) {
         return;
     }
 
-    scope.querySelectorAll('.section-title, .section-subtitle, .band-card, .show-item, .shows-empty, .platform-card, .social-link, .contact-item, .store-product').forEach((element) => {
+    elements.forEach((element) => {
         if (element.dataset.animatedReady === 'true') {
             return;
         }
 
         element.dataset.animatedReady = 'true';
         element.classList.add('animate-on-scroll');
+
+        if (!sectionObserver) {
+            element.classList.add('visible');
+            return;
+        }
+
         sectionObserver.observe(element);
     });
 }
@@ -190,470 +379,321 @@ function initContactForm() {
             return;
         }
 
-        submitBtn.textContent = 'Enviando...';
+        submitBtn.textContent = contactUiState.sendingLabel;
         submitBtn.disabled = true;
     });
 }
 
-function initHeroParallax() {
-    const heroBackground = document.querySelector('.hero-background');
-
-    window.addEventListener('scroll', () => {
-        if (!heroBackground || window.innerWidth <= 768) {
-            return;
-        }
-
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * 0.3;
-        heroBackground.style.transform = `translateY(${rate}px)`;
-    });
-}
-
-function renderHeroContent(hero) {
-    const spotifyPlayer = document.getElementById('hero-spotify-player');
-    const spotifyEmbed = document.getElementById('hero-spotify-embed');
-    const videoLink = document.getElementById('hero-video-link');
-    const videoThumb = document.getElementById('hero-video-thumb');
-
-    if (spotifyPlayer && spotifyEmbed) {
-        const embedUrl = normalizeSpotifyEmbedUrl(hero.spotifyEmbedUrl || spotifyEmbed.src);
-        spotifyPlayer.hidden = !embedUrl;
-
-        if (embedUrl) {
-            spotifyEmbed.src = embedUrl;
-        }
-    }
-
-    if (videoLink && videoThumb) {
-        const videoUrl = hero.youtubeUrl || videoLink.href;
-        const videoTitle = hero.youtubeTitle || videoThumb.alt || 'Video destacado de Camilo Suazo';
-        const videoThumbnailUrl = hero.youtubeThumbnailUrl || buildYouTubeThumbnail(videoUrl) || videoThumb.src;
-
-        videoLink.hidden = !videoUrl;
-
-        if (videoUrl) {
-            videoLink.href = videoUrl;
-        }
-
-        if (videoThumbnailUrl) {
-            videoThumb.src = videoThumbnailUrl;
-        }
-
-        videoThumb.alt = videoTitle;
+function setFooterYear() {
+    const footerYear = document.getElementById('footer-year');
+    if (footerYear) {
+        footerYear.textContent = String(new Date().getFullYear());
     }
 }
 
-function renderShows(shows) {
-    const showsContent = document.getElementById('shows-content');
-    if (!showsContent) {
-        return;
+function renderHero(hero) {
+    setText('hero-eyebrow', hero.eyebrow);
+    setText('hero-title', hero.name);
+    setText('hero-headline', hero.headline);
+    setText('hero-summary', hero.summary);
+    setText('hero-photo-caption', hero.photoCaption);
+    setText('hero-current-role', hero.currentRole);
+    setText('hero-current-company', hero.currentCompany);
+    setText('hero-current-summary', hero.currentSummary);
+    setText('hero-signals-title', hero.signalsTitle);
+    setAttributeValue('hero-panel', 'aria-label', hero.panelAriaLabel);
+    setImage('hero-photo', hero.photoUrl, hero.photoAlt || hero.name || 'Camilo Suazo');
+
+    const actions = document.getElementById('hero-actions');
+    if (actions) {
+        actions.innerHTML = (hero.actions || []).map(renderActionButton).join('');
     }
 
-    const visibleShows = (shows.items || []).filter((item) => item && item.visible !== false);
-
-    if (!visibleShows.length) {
-        showsContent.innerHTML = `
-            <div class="shows-empty">
-                <p class="shows-empty-text">${escapeHtml(shows.emptyTitle || 'Fechas por confirmar')}</p>
-                <p class="shows-empty-subtext">${escapeHtml(shows.emptySubtitle || 'Pronto anunciaremos nuevas presentaciones')}</p>
-            </div>
-        `;
-        return;
+    const focus = document.getElementById('hero-focus');
+    if (focus) {
+        focus.innerHTML = (hero.focus || [])
+            .map((item) => `<li class="chip">${escapeHtml(item)}</li>`)
+            .join('');
     }
 
-    showsContent.innerHTML = `
-        <div class="shows-list">
-            ${visibleShows.map(renderShowItem).join('')}
-        </div>
-    `;
+    const signals = document.getElementById('hero-signals');
+    if (signals) {
+        signals.innerHTML = (hero.signals || [])
+            .map((signal) => `
+                <article class="signal-card reveal">
+                    <span class="signal-label">${escapeHtml(signal.label || '')}</span>
+                    <p class="signal-value">${escapeHtml(signal.value || '')}</p>
+                </article>
+            `)
+            .join('');
+    }
 }
 
-function renderShowItem(show) {
-    const formattedDate = formatShowDate(show.date);
-    const actions = [];
+function renderAbout(about) {
+    setText('about-eyebrow', about.eyebrow);
+    setText('about-title', about.title);
+    setText('about-summary-title', about.summaryTitle);
+    setText('about-growth-title', about.growthTitle);
 
-    if (show.mapUrl) {
-        actions.push(`
-            <a href="${escapeAttr(show.mapUrl)}" class="btn-tickets" target="_blank" rel="noopener noreferrer">Ver mapa</a>
-        `);
+    const aboutCopy = document.getElementById('about-copy');
+    if (aboutCopy) {
+        aboutCopy.innerHTML = (about.paragraphs || [])
+            .map((paragraph) => `<p class="reveal">${escapeHtml(paragraph)}</p>`)
+            .join('');
     }
 
-    if (show.postUrl) {
-        actions.push(`
-            <a href="${escapeAttr(show.postUrl)}" class="btn-tickets" target="_blank" rel="noopener noreferrer">${escapeHtml(show.postLabel || 'Ver publicacion')}</a>
-        `);
-    }
-
-    const noteMarkup = show.note ? `<p class="show-note">${escapeHtml(show.note)}</p>` : '';
-
-    return `
-        <article class="show-item">
-            <div class="show-date">
-                <span class="show-month">${escapeHtml(formattedDate.month)}</span>
-                <span class="show-day">${escapeHtml(formattedDate.day)}</span>
-                <span class="show-year">${escapeHtml(formattedDate.year)}</span>
-            </div>
-            <div class="show-info">
-                <h3 class="show-venue">${escapeHtml(show.venue || 'Show')}</h3>
-                <p class="show-location">${escapeHtml(show.location || '')}</p>
-                ${noteMarkup}
-            </div>
-            <div class="show-actions">
-                ${actions.length ? actions.join('') : '<span class="btn-coming-soon">Proximamente</span>'}
-            </div>
-        </article>
-    `;
-}
-
-function renderStore(store) {
-    const storeGrid = document.getElementById('store-grid');
-    const storeNote = document.getElementById('store-note');
-
-    if (!storeGrid) {
-        return;
-    }
-
-    const visibleProducts = (store.products || []).filter((product) => product && product.visible !== false);
-
-    if (!visibleProducts.length) {
-        storeGrid.innerHTML = `
-            <div class="store-empty">
-                <div class="store-empty-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                        <path d="M6 7h12l-1 13H7L6 7z"/>
-                        <path d="M9 7a3 3 0 0 1 6 0"/>
-                    </svg>
+    const aboutHighlights = document.getElementById('about-highlights');
+    if (aboutHighlights) {
+        aboutHighlights.innerHTML = (about.highlights || [])
+            .map((item) => `
+                <div class="detail-item reveal">
+                    <span class="detail-label">${escapeHtml(item.label || '')}</span>
+                    <span class="detail-value">${escapeHtml(item.value || '')}</span>
                 </div>
-                <h3 class="store-empty-title">Tienda en actualizacion</h3>
-                <p class="store-empty-text">Muy pronto publicaremos nuevos productos.</p>
-                <p class="store-empty-subtext">Mientras tanto, revisa las redes sociales para novedades.</p>
-            </div>
-        `;
-    } else {
-        storeGrid.innerHTML = visibleProducts.map(renderStoreProduct).join('');
+            `)
+            .join('');
     }
 
-    if (storeNote) {
-        storeNote.textContent = store.note || '';
+    const growthList = document.getElementById('growth-list');
+    if (growthList) {
+        growthList.innerHTML = (about.growthInterests || [])
+            .map((item) => `<li class="reveal">${escapeHtml(item)}</li>`)
+            .join('');
     }
-
-    initProductGalleries();
 }
 
-function renderStoreProduct(product) {
-    const images = normalizeImageList(product.images);
-    const imageData = escapeAttr(JSON.stringify(images));
-    const galleryMarkup = images.length > 1 ? `
-        <div class="store-product-gallery">
-            <button class="gallery-arrow gallery-prev" aria-label="Anterior">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="15 18 9 12 15 6"/>
-                </svg>
-            </button>
-            <div class="store-product-image" data-images="${imageData}" style="background-image: url('${escapeAttr(images[0])}');"></div>
-            <button class="gallery-arrow gallery-next" aria-label="Siguiente">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="9 18 15 12 9 6"/>
-                </svg>
-            </button>
-            <div class="gallery-dots">
-                ${images.map((_, index) => `<span class="gallery-dot${index === 0 ? ' active' : ''}" data-index="${index}"></span>`).join('')}
-            </div>
-        </div>
-    ` : renderStoreImage(images, imageData);
-    const availabilityLabel = product.availabilityLabel || (product.available ? 'Disponible' : 'No disponible');
-    const badgeClass = product.available ? 'store-product-badge is-available' : 'store-product-badge';
-    const actionMarkup = product.available && product.ctaUrl ? `
-        <div class="store-product-actions">
-            <a href="${escapeAttr(product.ctaUrl)}" class="btn btn-primary btn-store" target="_blank" rel="noopener noreferrer">${escapeHtml(product.ctaLabel || 'Comprar')}</a>
-        </div>
-    ` : '';
-    const priceMarkup = product.priceLabel ? `<p class="store-product-price">${escapeHtml(product.priceLabel)}</p>` : '';
+function renderWork(work) {
+    setText('work-eyebrow', work.eyebrow);
+    setText('work-title', work.title);
+    setText('work-intro', work.intro);
 
-    return `
-        <article class="store-product">
-            ${galleryMarkup}
-            <div class="store-product-info">
-                <h3 class="store-product-name">${escapeHtml(product.name || 'Producto')}</h3>
-                <p class="store-product-variant">${escapeHtml(product.variant || '')}</p>
-                ${priceMarkup}
-                <span class="${badgeClass}">${escapeHtml(availabilityLabel)}</span>
-                ${actionMarkup}
-            </div>
-        </article>
-    `;
-}
-
-function renderStoreImage(images, imageData) {
-    if (!images.length) {
-        return `
-            <div class="store-product-image store-product-placeholder" data-images="${imageData}">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                    <rect x="3" y="4" width="18" height="16" rx="2"/>
-                    <circle cx="9" cy="10" r="1.5"/>
-                    <path d="M21 16l-5-5-4 4-2-2-5 5"/>
-                </svg>
-            </div>
-        `;
-    }
-
-    return `
-        <div class="store-product-image" data-images="${imageData}" style="background-image: url('${escapeAttr(images[0])}');"></div>
-    `;
-}
-
-function initProductGalleries() {
-    document.querySelectorAll('.store-product-gallery').forEach((gallery) => {
-        if (gallery.dataset.galleryReady === 'true') {
-            return;
-        }
-
-        const imageEl = gallery.querySelector('.store-product-image');
-        if (!imageEl || !imageEl.dataset.images) {
-            return;
-        }
-
-        let images = [];
-        try {
-            images = JSON.parse(imageEl.dataset.images);
-        } catch (error) {
-            console.warn('No se pudieron leer las imagenes de la galeria.', error);
-            return;
-        }
-
-        if (!images.length) {
-            return;
-        }
-
-        const dots = gallery.querySelectorAll('.gallery-dot');
-        const prevBtn = gallery.querySelector('.gallery-prev');
-        const nextBtn = gallery.querySelector('.gallery-next');
-        let currentIndex = 0;
-
-        function updateImage(index) {
-            currentIndex = ((index % images.length) + images.length) % images.length;
-            imageEl.style.backgroundImage = `url('${images[currentIndex]}')`;
-
-            dots.forEach((dot, dotIndex) => {
-                dot.classList.toggle('active', dotIndex === currentIndex);
-            });
-        }
-
-        if (prevBtn) {
-            prevBtn.addEventListener('click', (event) => {
-                event.preventDefault();
-                event.stopPropagation();
-                updateImage(currentIndex - 1);
-            });
-        }
-
-        if (nextBtn) {
-            nextBtn.addEventListener('click', (event) => {
-                event.preventDefault();
-                event.stopPropagation();
-                updateImage(currentIndex + 1);
-            });
-        }
-
-        dots.forEach((dot) => {
-            dot.addEventListener('click', (event) => {
-                event.preventDefault();
-                event.stopPropagation();
-                updateImage(parseInt(dot.dataset.index || '0', 10));
-            });
-        });
-
-        gallery.dataset.galleryReady = 'true';
-    });
-}
-
-function initLightbox() {
-    if (lightboxController) {
+    const workGrid = document.getElementById('work-grid');
+    if (!workGrid) {
         return;
     }
 
-    const lightbox = document.createElement('div');
-    lightbox.className = 'lightbox';
-    lightbox.innerHTML = `
-        <button class="lightbox-close" aria-label="Cerrar">&times;</button>
-        <button class="lightbox-prev" aria-label="Anterior">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="15 18 9 12 15 6"/>
-            </svg>
-        </button>
-        <img class="lightbox-image" src="" alt="Imagen del producto">
-        <button class="lightbox-next" aria-label="Siguiente">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 18 15 12 9 6"/>
-            </svg>
-        </button>
+    workGrid.innerHTML = (work.items || []).map((item, index) => `
+        <article class="feature-card reveal">
+            <span class="feature-index">${String(index + 1).padStart(2, '0')}</span>
+            <h3 class="feature-title">${escapeHtml(item.title || '')}</h3>
+            <p class="feature-description">${escapeHtml(item.description || '')}</p>
+        </article>
+    `).join('');
+}
+
+function renderStack(stack) {
+    setText('stack-eyebrow', stack.eyebrow);
+    setText('stack-title', stack.title);
+    setText('stack-intro', stack.intro);
+
+    const stackGrid = document.getElementById('stack-grid');
+    if (!stackGrid) {
+        return;
+    }
+
+    stackGrid.innerHTML = (stack.groups || []).map((group) => `
+        <article class="stack-card reveal">
+            <p class="card-eyebrow">${escapeHtml(group.title || '')}</p>
+            <div class="tag-list">
+                ${(group.items || []).map((item) => `<span class="tag">${escapeHtml(item)}</span>`).join('')}
+            </div>
+        </article>
+    `).join('');
+}
+
+function renderProjects(projects) {
+    setText('projects-eyebrow', projects.eyebrow);
+    setText('projects-title', projects.title);
+    setText('projects-intro', projects.intro);
+
+    const projectsGrid = document.getElementById('projects-grid');
+    if (!projectsGrid) {
+        return;
+    }
+
+    projectsGrid.innerHTML = (projects.items || []).map((project) => `
+        <article class="project-card reveal">
+            <div class="project-card-header">
+                <span class="project-status">${escapeHtml(project.status || '')}</span>
+                ${renderInlineAction(project)}
+            </div>
+            <h3 class="project-title">${escapeHtml(project.title || '')}</h3>
+            <p class="project-description">${escapeHtml(project.description || '')}</p>
+            <div class="tag-list">
+                ${(project.tech || []).map((item) => `<span class="tag tag-soft">${escapeHtml(item)}</span>`).join('')}
+            </div>
+        </article>
+    `).join('');
+}
+
+function renderInlineAction(item) {
+    const label = escapeHtml(item.ctaLabel || 'More');
+    const url = item.ctaUrl || '';
+
+    if (!url) {
+        return `<span class="inline-action is-disabled">${label}</span>`;
+    }
+
+    const externalAttrs = isExternalHttpUrl(url) ? ' target="_blank" rel="noopener noreferrer"' : '';
+    return `<a href="${escapeAttr(url)}" class="inline-action"${externalAttrs}>${label}</a>`;
+}
+
+function renderEducation(education) {
+    setText('education-eyebrow', education.eyebrow);
+    setText('education-title', education.title);
+    setText('education-intro', education.intro);
+
+    const educationGrid = document.getElementById('education-grid');
+    if (!educationGrid) {
+        return;
+    }
+
+    educationGrid.innerHTML = (education.items || []).map((item) => `
+        <article class="timeline-item reveal">
+            <span class="timeline-meta">${escapeHtml(item.meta || '')}</span>
+            <h3 class="timeline-title">${escapeHtml(item.title || '')}</h3>
+            <p class="timeline-description">${escapeHtml(item.description || '')}</p>
+        </article>
+    `).join('');
+}
+
+function renderApproach(approach) {
+    setText('approach-eyebrow', approach.eyebrow);
+    setText('approach-title', approach.title);
+    setText('approach-intro', approach.intro);
+
+    const approachGrid = document.getElementById('approach-grid');
+    if (!approachGrid) {
+        return;
+    }
+
+    approachGrid.innerHTML = (approach.items || []).map((item) => `
+        <article class="principle-card reveal">
+            <h3 class="principle-title">${escapeHtml(item.title || '')}</h3>
+            <p class="principle-description">${escapeHtml(item.description || '')}</p>
+        </article>
+    `).join('');
+}
+
+function renderContact(contact) {
+    contactUiState = {
+        sendingLabel: contact.sendingLabel || 'Sending...',
+        openLabel: contact.openLabel || 'Open',
+        readyLabel: contact.readyLabel || 'Prepared'
+    };
+
+    setText('contact-eyebrow', contact.eyebrow);
+    setText('contact-title', contact.title);
+    setText('contact-text', contact.text);
+    setText('contact-form-title', contact.formTitle);
+    setText('contact-name-label', contact.fields?.nameLabel);
+    setText('contact-email-label', contact.fields?.emailLabel);
+    setText('contact-message-label', contact.fields?.messageLabel);
+    setText('contact-submit', contact.submitLabel);
+
+    setPlaceholder('contact-name', contact.fields?.namePlaceholder);
+    setPlaceholder('contact-email', contact.fields?.emailPlaceholder);
+    setPlaceholder('contact-message', contact.fields?.messagePlaceholder);
+
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm && contact.formAction) {
+        contactForm.action = contact.formAction;
+    }
+
+    const contactSubject = document.getElementById('contact-subject');
+    if (contactSubject && contact.formSubject) {
+        contactSubject.value = contact.formSubject;
+    }
+
+    const contactLinks = document.getElementById('contact-links');
+    if (contactLinks) {
+        contactLinks.innerHTML = (contact.links || []).map((link) => renderContactLink(link, contact)).join('');
+    }
+}
+
+function renderContactLink(link, contact) {
+    const label = escapeHtml(link.label || '');
+    const description = escapeHtml(link.description || '');
+    const href = link.href || '';
+    const downloadAttr = isDownloadableAsset(href) ? ' download' : '';
+
+    if (!href) {
+        return `
+            <article class="contact-link-card is-disabled reveal" aria-disabled="true">
+                <span class="contact-link-label">${label}</span>
+                <p class="contact-link-description">${description}</p>
+                <span class="contact-link-meta">${escapeHtml(contact.readyLabel || 'Prepared')}</span>
+            </article>
+        `;
+    }
+
+    const externalAttrs = isExternalHttpUrl(href) ? ' target="_blank" rel="noopener noreferrer"' : '';
+    return `
+        <a href="${escapeAttr(href)}" class="contact-link-card reveal"${externalAttrs}${downloadAttr}>
+            <span class="contact-link-label">${label}</span>
+            <p class="contact-link-description">${description}</p>
+            <span class="contact-link-meta">${escapeHtml(contact.openLabel || 'Open')}</span>
+        </a>
     `;
-    document.body.appendChild(lightbox);
-
-    const lightboxImage = lightbox.querySelector('.lightbox-image');
-    const closeBtn = lightbox.querySelector('.lightbox-close');
-    const prevBtn = lightbox.querySelector('.lightbox-prev');
-    const nextBtn = lightbox.querySelector('.lightbox-next');
-
-    lightboxController = {
-        currentImages: [],
-        currentIndex: 0,
-        open(images, index) {
-            this.currentImages = images;
-            this.currentIndex = index;
-            this.update();
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-
-            const hasMultiple = images.length > 1;
-            prevBtn.style.display = hasMultiple ? 'flex' : 'none';
-            nextBtn.style.display = hasMultiple ? 'flex' : 'none';
-        },
-        close() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        },
-        update() {
-            lightboxImage.src = this.currentImages[this.currentIndex];
-        },
-        prev() {
-            this.currentIndex = (this.currentIndex - 1 + this.currentImages.length) % this.currentImages.length;
-            this.update();
-        },
-        next() {
-            this.currentIndex = (this.currentIndex + 1) % this.currentImages.length;
-            this.update();
-        }
-    };
-
-    closeBtn.addEventListener('click', () => lightboxController.close());
-    prevBtn.addEventListener('click', () => lightboxController.prev());
-    nextBtn.addEventListener('click', () => lightboxController.next());
-
-    lightbox.addEventListener('click', (event) => {
-        if (event.target === lightbox) {
-            lightboxController.close();
-        }
-    });
-
-    document.addEventListener('keydown', (event) => {
-        if (!lightbox.classList.contains('active')) {
-            return;
-        }
-
-        if (event.key === 'Escape') {
-            lightboxController.close();
-        }
-
-        if (event.key === 'ArrowLeft') {
-            lightboxController.prev();
-        }
-
-        if (event.key === 'ArrowRight') {
-            lightboxController.next();
-        }
-    });
-
-    document.addEventListener('click', (event) => {
-        const imageEl = event.target.closest('.store-product-image');
-        if (!imageEl || event.target.closest('.gallery-arrow')) {
-            return;
-        }
-
-        let images = [];
-        try {
-            images = JSON.parse(imageEl.dataset.images || '[]');
-        } catch (error) {
-            console.warn('No se pudieron abrir las imagenes del producto.', error);
-            return;
-        }
-
-        if (!images.length) {
-            return;
-        }
-
-        const currentBackground = imageEl.style.backgroundImage;
-        let startIndex = 0;
-        images.forEach((image, index) => {
-            if (currentBackground.includes(image)) {
-                startIndex = index;
-            }
-        });
-
-        lightboxController.open(images, startIndex);
-    });
 }
 
-function normalizeImageList(images) {
-    if (!Array.isArray(images)) {
-        return [];
-    }
-
-    return images.filter(Boolean);
+function renderFooter(footer) {
+    setText('footer-text', footer.text);
 }
 
-function normalizeSpotifyEmbedUrl(url) {
-    if (!url) {
-        return '';
+function renderActionButton(action) {
+    const label = escapeHtml(action.label || '');
+    const href = action.href || '';
+    const variant = action.variant === 'primary' ? 'btn-primary' : 'btn-secondary';
+    const downloadAttr = isDownloadableAsset(href) ? ' download' : '';
+
+    if (!href) {
+        return `<span class="btn ${variant} is-disabled" aria-disabled="true">${label}</span>`;
     }
 
-    if (url.includes('/embed/')) {
-        return url;
-    }
-
-    const match = url.match(/open\.spotify\.com\/(track|album|playlist|artist)\/([A-Za-z0-9]+)/);
-    if (!match) {
-        return url;
-    }
-
-    return `https://open.spotify.com/embed/${match[1]}/${match[2]}?utm_source=generator&theme=0`;
+    const externalAttrs = isExternalHttpUrl(href) ? ' target="_blank" rel="noopener noreferrer"' : '';
+    return `<a href="${escapeAttr(href)}" class="btn ${variant}"${externalAttrs}${downloadAttr}>${label}</a>`;
 }
 
-function buildYouTubeThumbnail(url) {
-    const videoId = extractYouTubeId(url);
-    if (!videoId) {
-        return '';
+function setText(id, value) {
+    const element = document.getElementById(id);
+    if (element && typeof value === 'string' && value.trim()) {
+        element.textContent = value;
     }
-
-    return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 }
 
-function extractYouTubeId(url) {
-    if (!url) {
-        return '';
+function setAttributeValue(id, attribute, value) {
+    const element = document.getElementById(id);
+    if (element && typeof value === 'string' && value.trim()) {
+        element.setAttribute(attribute, value);
     }
-
-    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([A-Za-z0-9_-]{6,})/);
-    return match ? match[1] : '';
 }
 
-function formatShowDate(dateString) {
-    if (!dateString) {
-        return {
-            day: '--',
-            month: 'SIN FECHA',
-            year: ''
-        };
+function setPlaceholder(id, value) {
+    const element = document.getElementById(id);
+    if (element && typeof value === 'string' && value.trim()) {
+        element.setAttribute('placeholder', value);
+    }
+}
+
+function setImage(id, src, alt) {
+    const image = document.getElementById(id);
+    if (!image || !src) {
+        return;
     }
 
-    const date = new Date(`${dateString}T12:00:00`);
-    if (Number.isNaN(date.getTime())) {
-        return {
-            day: '--',
-            month: 'SIN FECHA',
-            year: ''
-        };
+    image.src = src;
+    if (alt) {
+        image.alt = alt;
     }
+}
 
-    const month = new Intl.DateTimeFormat('es-CL', {
-        month: 'short'
-    }).format(date).replace('.', '').toUpperCase();
+function isExternalHttpUrl(value) {
+    return /^https?:\/\//i.test(value);
+}
 
-    return {
-        day: new Intl.DateTimeFormat('es-CL', { day: '2-digit' }).format(date),
-        month,
-        year: new Intl.DateTimeFormat('es-CL', { year: 'numeric' }).format(date)
-    };
+function isDownloadableAsset(value) {
+    return /\.(pdf|doc|docx)$/i.test(value || '');
 }
 
 function escapeHtml(value) {
