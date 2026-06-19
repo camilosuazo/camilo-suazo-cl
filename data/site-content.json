@@ -9,9 +9,9 @@
       "site": {
         "htmlLang": "es",
         "locale": "es_CL",
-        "title": "Camilo Suazo | Analista de Datos e Ingeniero en Computación e Informática",
-        "description": "Portafolio profesional de Camilo Suazo, Analista de Datos e Ingeniero en Computación e Informática. Experiencia en análisis de datos, SQL, Python, reportería, automatización e inteligencia artificial aplicada.",
-        "keywords": "analista de datos, data analyst, SQL, Python, Power BI, inteligencia artificial aplicada, ingeniería en computación, business intelligence, data science, Chile",
+        "title": "Camilo Suazo | Data Engineer Junior",
+        "description": "Ingeniero en Computación e Informática orientado a Data Engineering, Python, SQL, automatización de datos, pipelines e IA aplicada al procesamiento de conversaciones.",
+        "keywords": "data engineer junior, data engineering, data analyst técnico, Python, SQL, SQL Server, pandas, JSON, JSONL, AWS, Kubernetes, BigQuery, automatización de datos, pipelines de datos, Chile",
         "siteUrl": "https://camilosuazo.cl",
         "ogImage": "https://camilosuazo.cl/favicon-512.png",
         "themeColor": "#07111F",
@@ -32,8 +32,8 @@
       "hero": {
         "eyebrow": "Portafolio profesional",
         "name": "Camilo Suazo",
-        "headline": "Analista de Datos | Ingeniero en Computación e Informática",
-        "summary": "Transformo datos en información clara para apoyar decisiones, automatizar procesos y generar valor de negocio.",
+        "headline": "Data Engineer Junior | Python, SQL y Pipelines de Datos",
+        "summary": "Ingeniero en Computación e Informática con experiencia en análisis, procesamiento y automatización de datos. Actualmente trabajo en SmartVOC, apoyando la operación de pipelines de transcripción, categorización con IA, reprocesos batch, validación de datos y consultas SQL.",
         "photoUrl": "assets/camilo-suazo-profile.png",
         "photoAlt": "Camilo Suazo",
         "photoCaption": "Las Condes, Región Metropolitana, Chile",
@@ -42,254 +42,230 @@
         "focus": [
           "Python",
           "SQL",
-          "Reporting",
-          "Visualización",
-          "Customer Analytics",
-          "VOC"
+          "pandas",
+          "JSON / JSONL",
+          "SQL Server",
+          "AWS básico",
+          "Kubernetes operativo"
         ],
         "actions": [
           {
+            "label": "Ver experiencia",
+            "href": "#que-hago",
+            "variant": "primary"
+          },
+          {
             "label": "Ver proyectos",
             "href": "#proyectos",
-            "variant": "primary"
+            "variant": "secondary"
           },
           {
             "label": "Contactar",
             "href": "#contacto",
             "variant": "secondary"
-          },
-          {
-            "label": "Descargar CV",
-            "href": "assets/cv-camilo-suazo-analista-datos-2026.pdf",
-            "variant": "secondary"
-          },
-          {
-            "label": "LinkedIn",
-            "href": "https://www.linkedin.com/in/camilosuazom/",
-            "variant": "secondary"
-          },
-          {
-            "label": "GitHub",
-            "href": "https://github.com/camilosuazo",
-            "variant": "secondary"
           }
         ],
-        "currentRole": "Analista de Datos",
-        "currentCompany": "SmartUp | Diciembre 2025 - Actualidad",
-        "currentSummary": "Participo en proyectos de conversational analytics y Voice of the Customer, trabajando con Python, SQL, Excel y visualización para preparar datos, generar reportes y apoyar decisiones.",
+        "currentRole": "Data & Software Engineer Junior / SmartVOC",
+        "currentCompany": "SmartUp / SmartVOC | Agosto 2025 - Actualidad",
+        "currentSummary": "Apoyo la operación técnica de SmartVOC, plataforma de análisis de conversaciones mediante transcripción, procesamiento y categorización con modelos de IA. Trabajo con datos de clientes, reprocesos batch, consultas SQL, validación de outputs, reportes y automatización con Python.",
         "signals": [
           {
-            "label": "Datos y calidad",
-            "value": "JSON, JSONL, Excel y Python"
+            "label": "Datos y automatización",
+            "value": "Python, pandas, SQL y JSONL"
           },
           {
-            "label": "Analítica conversacional",
-            "value": "VOC, taxonomías y precisión"
+            "label": "Operación SmartVOC",
+            "value": "Batches, reprocesos y validación"
           },
           {
             "label": "Proyección",
-            "value": "Data Science aplicada e IA"
+            "value": "Data Engineering e IA aplicada"
           }
         ]
       },
       "about": {
         "eyebrow": "Sobre mí",
-        "title": "Perfil orientado a datos, negocio y mejora continua",
+        "title": "Perfil junior orientado a Data Engineering y automatización",
         "summaryTitle": "Resumen profesional",
         "growthTitle": "Intereses de crecimiento",
         "paragraphs": [
-          "Soy Analista de Datos e Ingeniero en Computación e Informática, con experiencia en análisis, transformación y automatización de datos para proyectos de banca, telecomunicaciones y servicios.",
-          "Actualmente me desempeño en SmartUp, participando en proyectos de análisis conversacional y Voice of the Customer. Trabajo con Python, SQL, Excel y herramientas de visualización para preparar datos, generar reportes y apoyar la toma de decisiones con evidencia clara.",
-          "Me proyecto hacia roles de Data Scientist aplicado y Analytics Engineer, mientras sigo profundizando en inteligencia artificial aplicada, machine learning y analítica avanzada. Me interesa combinar capacidad técnica, pensamiento analítico y comunicación clara con stakeholders."
+          "Soy Ingeniero en Computación e Informática, con experiencia práctica en análisis de datos, automatización con Python, procesamiento de archivos JSON/JSONL, consultas SQL y operación de pipelines de datos.",
+          "Mi trayectoria en SmartUp comenzó más cerca del análisis de datos, procesamiento de archivos, Excel, Power Query, dashboards, reportes en Notion y análisis de conversaciones. Desde junio de 2026 estoy asumiendo tareas más cercanas a Data Engineering, operación técnica de pipelines, automatización y soporte de SmartVOC.",
+          "Actualmente estoy orientando mi perfil hacia Data Engineering y AI Data Engineering, trabajando con flujos de procesamiento, categorización con modelos de IA, validación de resultados, reprocesos batch y soporte técnico-operacional de sistemas de datos."
         ],
         "highlights": [
           {
             "label": "Rol actual",
-            "value": "Analista de Datos en SmartUp"
+            "value": "Data & Software Engineer Junior / SmartVOC"
           },
           {
             "label": "Base técnica",
-            "value": "Ingeniería en Computación e Informática"
+            "value": "Ingeniero en Computación e Informática UNAB"
           },
           {
-            "label": "Inglés",
-            "value": "Intermedio alto (Proficiency Level 16)"
+            "label": "Inicio en SmartUp",
+            "value": "27 de agosto de 2025"
           },
           {
-            "label": "Diferencial",
-            "value": "Pensamiento analítico, comunicación efectiva y aprendizaje continuo"
+            "label": "Foco actual",
+            "value": "Data Engineering, automatización, pipelines e IA aplicada a datos"
           }
         ],
         "growthInterests": [
-          "Data Scientist aplicado",
-          "Analytics Engineer",
-          "IA aplicada al negocio",
-          "Machine Learning",
-          "Análisis avanzado"
+          "Data Engineering",
+          "AI Data Engineering",
+          "Pipelines de datos",
+          "Procesamiento batch",
+          "Cloud y operación de sistemas de datos"
         ]
       },
       "work": {
         "eyebrow": "Qué hago",
-        "title": "Análisis, automatización y claridad para equipos de negocio",
-        "intro": "Trabajo en problemas donde los datos deben traducirse en lectura crítica, decisiones útiles y procesos más eficientes.",
+        "title": "Operación técnica de datos en SmartVOC",
+        "intro": "Apoyo en la operación técnica de SmartVOC, plataforma de análisis de conversaciones mediante transcripción, procesamiento y categorización con modelos de IA.",
         "items": [
           {
-            "title": "Análisis de datos",
-            "description": "Exploración, limpieza, transformación y lectura crítica de datos para identificar patrones, hallazgos operativos y oportunidades de mejora."
+            "title": "Procesamiento con Python",
+            "description": "Desarrollo y adaptación de scripts para procesar archivos JSON/JSONL, transformar datos y generar salidas estructuradas en Excel."
           },
           {
-            "title": "Reportería y visualización",
-            "description": "Generación de reportes analíticos con evidencia conversacional, métricas de precisión y resúmenes claros para equipos de negocio."
+            "title": "Consultas SQL y trazabilidad",
+            "description": "Revisión de batches, conversation IDs, estados de procesamiento y outputs en bases de datos SQL Server."
           },
           {
-            "title": "Automatización con Python",
-            "description": "Limpieza, transformación y normalización de datos en JSON, JSONL y Excel mediante scripts reproducibles con Pandas."
+            "title": "Reprocesos y validación",
+            "description": "Apoyo en reprocesos de datos, validación de conversaciones procesadas y carga hacia tablas de endpoint."
           },
           {
-            "title": "SQL y bases de datos",
-            "description": "Consultas, joins, agrupaciones y análisis exploratorio sobre bases relacionales para responder preguntas concretas de negocio."
+            "title": "Análisis conversacional",
+            "description": "Análisis de conversaciones y generación de reportes para clientes como Falabella, Claro, Sixbell y Mundo Call / SONAP."
           },
           {
-            "title": "IA aplicada y modelos de lenguaje",
-            "description": "Evaluación de categorizaciones, análisis de transcripciones, validación de taxonomías multinivel y revisión de calidad de clasificación."
+            "title": "Pipelines con IA",
+            "description": "Participación en tareas operacionales relacionadas con pipelines de transcripción, categorización con IA y envío de resultados a endpoints."
           },
           {
-            "title": "Comunicación de insights",
-            "description": "Explicación clara de resultados técnicos para personas no técnicas, con foco en contexto, acción y alineación con stakeholders."
+            "title": "Cloud y Kubernetes operativo",
+            "description": "Uso operativo de herramientas cloud y Kubernetes para revisión de servicios, logs, pods y procesos asociados a SmartVOC."
           }
         ]
       },
       "stack": {
         "eyebrow": "Stack",
-        "title": "Herramientas con foco aplicado",
-        "intro": "Trabajo con un stack práctico para análisis, visualización, reportería y automatización.",
+        "title": "Herramientas organizadas por foco de trabajo",
+        "intro": "Trabajo con un stack práctico para procesamiento, automatización, consultas SQL y operación de pipelines de datos.",
         "groups": [
           {
-            "title": "Lenguajes y análisis",
+            "title": "Lenguajes y datos",
             "items": [
               "Python",
               "SQL",
-              "R",
-              "Pandas",
-              "NumPy",
-              "Estadística aplicada"
+              "pandas",
+              "JSON / JSONL",
+              "Excel / Power Query"
             ]
           },
           {
-            "title": "Visualización y reportería",
+            "title": "Data Engineering",
             "items": [
-              "Power BI",
-              "Tableau",
-              "Excel",
-              "Matplotlib",
-              "Seaborn",
-              "Reportes ejecutivos"
+              "ETL básico",
+              "Procesamiento batch",
+              "Automatización de scripts",
+              "Validación de datos",
+              "Pipelines de datos",
+              "Integración con endpoints"
             ]
           },
           {
-            "title": "Bases de datos",
+            "title": "Cloud y operación",
             "items": [
-              "PostgreSQL",
-              "Modelado relacional básico",
-              "Consultas agrupadas",
-              "Joins",
-              "Subconsultas"
+              "AWS S3",
+              "AWS Lambda",
+              "AWS IAM",
+              "AWS EC2",
+              "Kubernetes básico",
+              "GitHub"
             ]
           },
           {
-            "title": "IA y automatización",
+            "title": "IA aplicada a datos",
             "items": [
-              "LLMs",
-              "Prompting",
-              "Evaluación de modelos",
-              "Automatización de reportes",
-              "Procesamiento de transcripciones"
+              "Categorización de conversaciones con modelos de IA",
+              "Procesamiento de transcripciones",
+              "Evaluación de outputs",
+              "Automatización de reportes"
             ]
           },
           {
-            "title": "Herramientas de trabajo",
+            "title": "Bases y entornos",
             "items": [
-              "Git / GitHub",
-              "Google Colab",
+              "SQL Server",
+              "BigQuery",
               "Jupyter Notebook",
               "Notion",
-              "VS Code"
+              "Git / GitHub"
             ]
           }
         ]
       },
       "projects": {
         "eyebrow": "Proyectos",
-        "title": "Trabajo aplicado y portafolio en desarrollo",
-        "intro": "Portafolio en construcción con proyectos orientados a análisis, automatización y resolución de problemas de negocio con datos.",
+        "title": "Casos aplicados en datos y operación",
+        "intro": "Trabajo aplicado orientado a procesamiento de conversaciones, automatización de reportes y soporte operacional de pipelines de datos.",
         "items": [
           {
-            "title": "Predicción de abandono de clientes (Churn)",
-            "description": "Proyecto en desarrollo orientado a analizar datos de clientes bancarios para entender patrones de cancelación de servicios y entrenar un modelo de clasificación para predecir churn.",
+            "title": "Procesamiento de conversaciones SmartVOC",
+            "description": "Procesamiento y validación de conversaciones mediante scripts Python, transformación de archivos JSONL a Excel, revisión de estados batch y análisis de outputs generados por modelos de IA.",
             "tech": [
               "Python",
-              "Pandas",
-              "Scikit-learn",
-              "Visualización de datos"
+              "pandas",
+              "JSON / JSONL",
+              "Excel",
+              "SQL Server"
             ],
             "ctaLabel": "Próximamente",
             "ctaUrl": "",
-            "status": "Proyecto aplicado"
+            "status": "SmartVOC"
           },
           {
-            "title": "Nexus - Plataforma interna de analítica y visualización",
-            "description": "Participación en el desarrollo y fortalecimiento de una plataforma multi-tenant orientada a visualización de datos e insights por cliente, incorporando mejoras de seguridad, autenticación y control de acceso.",
+            "title": "Automatización de reportes para clientes",
+            "description": "Generación de reportes basados en análisis de conversaciones, métricas de calidad, motivos de llamada, cumplimiento de pautas y hallazgos operacionales.",
             "tech": [
-              "JavaScript",
-              "Node.js",
-              "Express",
-              "Auth0",
-              "SQLite / PostgreSQL",
-              "Docker",
+              "Python",
+              "Excel",
+              "Power Query",
+              "Notion",
+              "Análisis conversacional"
+            ],
+            "ctaLabel": "Próximamente",
+            "ctaUrl": "",
+            "status": "Reportería"
+          },
+          {
+            "title": "Soporte operacional de pipelines de datos",
+            "description": "Apoyo en revisión de errores, reprocesos, validación de carga en endpoint y consultas SQL para trazabilidad de datos procesados.",
+            "tech": [
+              "Python",
+              "SQL",
+              "SQL Server",
+              "AWS",
               "Kubernetes"
             ],
             "ctaLabel": "Próximamente",
             "ctaUrl": "",
-            "status": "Producto interno"
-          },
-          {
-            "title": "Evaluación de categorizaciones con modelos de lenguaje",
-            "description": "Análisis comparativo de resultados generados por modelos de lenguaje sobre transcripciones de call center, midiendo coincidencia, errores, categorías faltantes y calidad de clasificación.",
-            "tech": [
-              "Python",
-              "Pandas",
-              "LLMs",
-              "Análisis de texto",
-              "Métricas de evaluación"
-            ],
-            "ctaLabel": "Próximamente",
-            "ctaUrl": "",
-            "status": "Analítica conversacional"
-          },
-          {
-            "title": "Normalización y preparación de datasets conversacionales",
-            "description": "Procesos de limpieza, transformación y estandarización de datos en formatos JSON, JSONL y Excel para análisis, validación de taxonomías y reportería analítica.",
-            "tech": [
-              "Python",
-              "Pandas",
-              "JSON / JSONL",
-              "Excel"
-            ],
-            "ctaLabel": "Próximamente",
-            "ctaUrl": "",
-            "status": "Automatización"
+            "status": "Operación de datos"
           }
         ]
       },
       "education": {
         "eyebrow": "Formación",
         "title": "Base técnica y aprendizaje continuo",
-        "intro": "Mi formación combina una base formal en Ingeniería en Computación e Informática con especialización práctica en análisis de datos, SQL, Python, estadística, machine learning e inteligencia artificial aplicada.",
+        "intro": "Mi formación combina una base formal en Ingeniería en Computación e Informática con aprendizaje práctico en datos, SQL, Python, automatización, cloud y sistemas de datos.",
         "items": [
           {
             "title": "Ingeniería en Computación e Informática - Universidad Andrés Bello",
             "meta": "Marzo 2023 - Septiembre 2025",
-            "description": "Base formal en programación, lógica, estructuras de datos y fundamentos técnicos para construir soluciones."
+            "description": "Base formal en programación, lógica, estructuras de datos, bases de datos y fundamentos técnicos para construir soluciones."
           },
           {
             "title": "Certificaciones relevantes",
@@ -297,48 +273,48 @@
             "description": "Google Data Analytics Professional Certificate (2025), IBM Data Science Professional Certificate (2024) e IBM AI Developer Professional Certificate (2025)."
           },
           {
-            "title": "Formación complementaria en análisis de datos",
+            "title": "Formación complementaria en datos",
             "meta": "Especialización continua",
-            "description": "Cursos aplicados como Data Analysis with Python y Databases and SQL for Data Science, enfocados en trabajo práctico con datos."
+            "description": "Cursos aplicados como Data Analysis with Python y Databases and SQL for Data Science, enfocados en trabajo práctico con datos, Python y SQL."
           },
           {
             "title": "Data Science Bootcamp en curso",
             "meta": "Desarrollo profesional",
-            "description": "Fortalecimiento de SQL, Python, estadística, machine learning, visualización e IA mediante estudio continuo y proyectos aplicados."
+            "description": "Fortalecimiento de SQL, Python, estadística, machine learning, visualización e IA mediante estudio continuo, con orientación actual hacia Data Engineering."
           }
         ]
       },
       "approach": {
         "eyebrow": "Mi enfoque",
-        "title": "Análisis con contexto, claridad y reproducibilidad",
-        "intro": "Mi enfoque no se limita a procesar datos: busco entender el contexto, formular buenas preguntas y comunicar resultados de manera clara. Me interesa que cada análisis pueda traducirse en una decisión, una mejora o una conversación útil para el negocio.",
+        "title": "Datos con trazabilidad, contexto y operación responsable",
+        "intro": "Mi enfoque combina criterio analítico con disciplina técnica: entender el contexto, procesar datos de forma reproducible, validar resultados y mantener trazabilidad cuando un flujo requiere soporte o reproceso.",
         "items": [
           {
-            "title": "Datos con sentido de negocio",
-            "description": "Priorizar preguntas útiles, contexto y acción por sobre la producción de indicadores aislados."
+            "title": "Trazabilidad de datos",
+            "description": "Revisar estados, identificadores, outputs y cargas para entender qué ocurrió en cada etapa de procesamiento."
           },
           {
-            "title": "Análisis reproducible",
-            "description": "Procesos ordenados, trazables y fáciles de mantener cuando una necesidad vuelve a aparecer."
+            "title": "Automatización mantenible",
+            "description": "Preferir scripts y procesos ordenados que puedan repetirse, ajustarse y validarse cuando cambian los archivos o necesidades."
           },
           {
-            "title": "Comunicación clara",
-            "description": "Traducir resultados técnicos en mensajes entendibles para equipos y liderazgos no técnicos, con una mirada pedagógica aplicada."
+            "title": "Comunicación técnica clara",
+            "description": "Traducir hallazgos, errores y estados de procesamiento en mensajes útiles para equipos técnicos y de negocio."
           },
           {
             "title": "Aprendizaje continuo",
-            "description": "Actualizar criterio técnico y metodológico de forma constante, con foco en Data Science, IA aplicada y uso real en negocio."
+            "description": "Profundizar progresivamente en Data Engineering, cloud, automatización, bases de datos e IA aplicada a sistemas de datos."
           },
           {
-            "title": "IA como apoyo estratégico",
-            "description": "Usar modelos de lenguaje para acelerar y ampliar el análisis, sin reemplazar criterio, validación ni responsabilidad analítica."
+            "title": "IA con validación",
+            "description": "Usar modelos de IA como parte de flujos de procesamiento sin perder validación de outputs, revisión de errores ni responsabilidad sobre los datos."
           }
         ]
       },
       "contact": {
         "eyebrow": "Contacto",
         "title": "Conversemos",
-        "text": "Estoy abierto a oportunidades profesionales, colaboración en proyectos de datos y conversaciones sobre análisis, automatización, Data Science e inteligencia artificial aplicada.",
+        "text": "Estoy abierto a oportunidades Data Engineer Junior, Data Analyst con foco técnico o AI/Data Engineer Junior, además de colaboración en proyectos de datos, automatización y procesamiento con IA.",
         "formTitle": "Mensaje directo",
         "submitLabel": "Enviar mensaje",
         "sendingLabel": "Enviando...",
@@ -370,7 +346,7 @@
           {
             "label": "LinkedIn",
             "href": "https://www.linkedin.com/in/camilosuazom/",
-            "description": "Perfil profesional actualizado con experiencia, certificaciones y foco en datos."
+            "description": "Perfil profesional actualizado con experiencia, certificaciones y foco en Data Engineering junior."
           },
           {
             "label": "Descargar CV",
@@ -380,16 +356,16 @@
         ]
       },
       "footer": {
-        "text": "Camilo Suazo - Analista de Datos / Ingeniero en Computación e Informática"
+        "text": "Camilo Suazo - Data Engineer Junior / Ingeniero en Computación e Informática"
       }
     },
     "en": {
       "site": {
         "htmlLang": "en",
         "locale": "en_US",
-        "title": "Camilo Suazo | Data Analyst & Computer Engineering Graduate",
-        "description": "Professional portfolio of Camilo Suazo, Data Analyst and Computer Engineering graduate. Experience in data analysis, SQL, Python, reporting, automation, and applied artificial intelligence.",
-        "keywords": "data analyst, SQL, Python, Power BI, applied artificial intelligence, computer engineering, business intelligence, data science, Chile",
+        "title": "Camilo Suazo | Junior Data Engineer",
+        "description": "Computer Engineering graduate focused on Data Engineering, Python, SQL, data automation, pipelines, and applied AI for conversational data processing.",
+        "keywords": "junior data engineer, data engineering, technical data analyst, Python, SQL, SQL Server, pandas, JSON, JSONL, AWS, Kubernetes, BigQuery, data automation, data pipelines, Chile",
         "siteUrl": "https://camilosuazo.cl",
         "ogImage": "https://camilosuazo.cl/favicon-512.png",
         "themeColor": "#07111F",
@@ -410,8 +386,8 @@
       "hero": {
         "eyebrow": "Professional portfolio",
         "name": "Camilo Suazo",
-        "headline": "Data Analyst | Computer Engineering & Informatics",
-        "summary": "I turn data into clear information to support decisions, automate processes, and create business value.",
+        "headline": "Junior Data Engineer | Python, SQL, and Data Pipelines",
+        "summary": "Computer Engineering graduate with experience in data analysis, processing, and automation. I currently work with SmartVOC, supporting transcription and AI categorization pipelines, batch reprocessing, data validation, and SQL queries.",
         "photoUrl": "assets/camilo-suazo-profile.png",
         "photoAlt": "Camilo Suazo",
         "photoCaption": "Las Condes, Metropolitan Region, Chile",
@@ -420,254 +396,230 @@
         "focus": [
           "Python",
           "SQL",
-          "Reporting",
-          "Visualization",
-          "Customer Analytics",
-          "VOC"
+          "pandas",
+          "JSON / JSONL",
+          "SQL Server",
+          "Basic AWS",
+          "Operational Kubernetes"
         ],
         "actions": [
           {
+            "label": "View experience",
+            "href": "#que-hago",
+            "variant": "primary"
+          },
+          {
             "label": "View projects",
             "href": "#proyectos",
-            "variant": "primary"
+            "variant": "secondary"
           },
           {
             "label": "Contact",
             "href": "#contacto",
             "variant": "secondary"
-          },
-          {
-            "label": "Download CV",
-            "href": "assets/cv-camilo-suazo-analista-datos-2026.pdf",
-            "variant": "secondary"
-          },
-          {
-            "label": "LinkedIn",
-            "href": "https://www.linkedin.com/in/camilosuazom/",
-            "variant": "secondary"
-          },
-          {
-            "label": "GitHub",
-            "href": "https://github.com/camilosuazo",
-            "variant": "secondary"
           }
         ],
-        "currentRole": "Data Analyst",
-        "currentCompany": "SmartUp | December 2025 - Present",
-        "currentSummary": "I work on conversational analytics and Voice of the Customer projects using Python, SQL, Excel, and visualization to prepare data, build reports, and support decision-making.",
+        "currentRole": "Junior Data & Software Engineer / SmartVOC",
+        "currentCompany": "SmartUp / SmartVOC | August 2025 - Present",
+        "currentSummary": "I support the technical operation of SmartVOC, a conversational analytics platform based on transcription, processing, and AI model categorization. I work with client data, batch reprocessing, SQL queries, output validation, reporting, and Python automation.",
         "signals": [
           {
-            "label": "Data quality",
-            "value": "JSON, JSONL, Excel, and Python"
+            "label": "Data and automation",
+            "value": "Python, pandas, SQL, and JSONL"
           },
           {
-            "label": "Conversational analytics",
-            "value": "VOC, taxonomies, and precision"
+            "label": "SmartVOC operation",
+            "value": "Batches, reprocessing, and validation"
           },
           {
             "label": "Career direction",
-            "value": "Applied Data Science and AI"
+            "value": "Data Engineering and applied AI"
           }
         ]
       },
       "about": {
         "eyebrow": "About",
-        "title": "A profile shaped by data, business context, and continuous growth",
+        "title": "Junior profile focused on Data Engineering and automation",
         "summaryTitle": "Professional snapshot",
         "growthTitle": "Growth areas",
         "paragraphs": [
-          "I am a Data Analyst and Computer Engineering graduate with experience in data analysis, transformation, and automation for banking, telecommunications, and services projects.",
-          "I currently work at SmartUp on conversational analytics and Voice of the Customer initiatives. I use Python, SQL, Excel, and visualization tools to prepare data, build reports, and support decision-making with clear evidence.",
-          "I see my career growing toward applied Data Scientist and Analytics Engineer roles while continuing to learn more about applied AI, machine learning, and advanced analytics. I aim to combine technical skill, analytical thinking, and clear stakeholder communication."
+          "I am a Computer Engineering graduate with hands-on experience in data analysis, Python automation, JSON/JSONL file processing, SQL queries, and data pipeline operations.",
+          "My path at SmartUp started closer to data analysis, file processing, Excel, Power Query, dashboards, Notion reporting, and conversation analysis. Since June 2026, I have been taking on tasks closer to Data Engineering, technical pipeline operations, automation, and SmartVOC support.",
+          "I am currently orienting my profile toward Data Engineering and AI Data Engineering, working with processing flows, AI model categorization, output validation, batch reprocessing, and technical-operational support for data systems."
         ],
         "highlights": [
           {
             "label": "Current role",
-            "value": "Data Analyst at SmartUp"
+            "value": "Junior Data & Software Engineer / SmartVOC"
           },
           {
             "label": "Technical foundation",
-            "value": "Computer Engineering & Informatics"
+            "value": "Computer Engineering & Informatics, UNAB"
           },
           {
-            "label": "English",
-            "value": "Upper-intermediate (Proficiency Level 16)"
+            "label": "Started at SmartUp",
+            "value": "August 27, 2025"
           },
           {
-            "label": "Strengths",
-            "value": "Analytical thinking, effective communication, and continuous learning"
+            "label": "Current focus",
+            "value": "Data Engineering, automation, pipelines, and applied AI for data"
           }
         ],
         "growthInterests": [
-          "Applied Data Scientist",
-          "Analytics Engineer",
-          "Applied AI for business",
-          "Machine Learning",
-          "Advanced analytics"
+          "Data Engineering",
+          "AI Data Engineering",
+          "Data pipelines",
+          "Batch processing",
+          "Cloud and data systems operation"
         ]
       },
       "work": {
         "eyebrow": "What I do",
-        "title": "Analysis, automation, and clarity for business teams",
-        "intro": "I work on problems where data needs to become critical insight, useful decisions, and more efficient processes.",
+        "title": "Technical data operation in SmartVOC",
+        "intro": "I support the technical operation of SmartVOC, a conversational analytics platform based on transcription, processing, and AI model categorization.",
         "items": [
           {
-            "title": "Data analysis",
-            "description": "Exploration, cleaning, transformation, and critical reading of data to identify patterns, operational findings, and improvement opportunities."
+            "title": "Python processing",
+            "description": "Development and adaptation of scripts to process JSON/JSONL files, transform data, and generate structured Excel outputs."
           },
           {
-            "title": "Reporting and visualization",
-            "description": "Analytical reporting with conversational evidence, precision metrics, and clear summaries for business teams."
+            "title": "SQL queries and traceability",
+            "description": "Review of batches, conversation IDs, processing states, and outputs in SQL Server databases."
           },
           {
-            "title": "Python automation",
-            "description": "Cleaning, transformation, and normalization of JSON, JSONL, and Excel data through reproducible Pandas-based workflows."
+            "title": "Reprocessing and validation",
+            "description": "Support for data reprocessing, validation of processed conversations, and loading into endpoint tables."
           },
           {
-            "title": "SQL and databases",
-            "description": "Queries, joins, aggregations, and exploratory analysis on relational data to answer concrete business questions."
+            "title": "Conversational analysis",
+            "description": "Conversation analysis and report generation for clients such as Falabella, Claro, Sixbell, and Mundo Call / SONAP."
           },
           {
-            "title": "Applied AI and language models",
-            "description": "Evaluation of categorizations, transcript analysis, multi-level taxonomy validation, and classification quality review."
+            "title": "AI pipelines",
+            "description": "Operational participation in transcription, AI categorization, and result delivery pipelines."
           },
           {
-            "title": "Insight communication",
-            "description": "Clear explanation of technical results for non-technical audiences, with focus on context, action, and alignment."
+            "title": "Cloud and operational Kubernetes",
+            "description": "Operational use of cloud tools and Kubernetes to review services, logs, pods, and SmartVOC-related processes."
           }
         ]
       },
       "stack": {
         "eyebrow": "Stack",
-        "title": "Practical tools for applied analytics",
-        "intro": "I work with a practical stack for analysis, visualization, reporting, and automation.",
+        "title": "Tools organized by work focus",
+        "intro": "I work with a practical stack for processing, automation, SQL queries, and data pipeline operations.",
         "groups": [
           {
-            "title": "Programming and analysis",
+            "title": "Languages and data",
             "items": [
               "Python",
               "SQL",
-              "R",
-              "Pandas",
-              "NumPy",
-              "Applied statistics"
+              "pandas",
+              "JSON / JSONL",
+              "Excel / Power Query"
             ]
           },
           {
-            "title": "Visualization and reporting",
+            "title": "Data Engineering",
             "items": [
-              "Power BI",
-              "Tableau",
-              "Excel",
-              "Matplotlib",
-              "Seaborn",
-              "Executive reporting"
+              "Basic ETL",
+              "Batch processing",
+              "Script automation",
+              "Data validation",
+              "Data pipelines",
+              "Endpoint integration"
             ]
           },
           {
-            "title": "Databases",
+            "title": "Cloud and operations",
             "items": [
-              "PostgreSQL",
-              "Basic relational modeling",
-              "Grouped queries",
-              "Joins",
-              "Subqueries"
+              "AWS S3",
+              "AWS Lambda",
+              "AWS IAM",
+              "AWS EC2",
+              "Basic Kubernetes",
+              "GitHub"
             ]
           },
           {
-            "title": "AI and automation",
+            "title": "Applied AI for data",
             "items": [
-              "LLMs",
-              "Prompting",
-              "Model evaluation",
-              "Report automation",
-              "Transcript processing"
+              "Conversation categorization with AI models",
+              "Transcript processing",
+              "Output evaluation",
+              "Report automation"
             ]
           },
           {
-            "title": "Work tools",
+            "title": "Databases and environments",
             "items": [
-              "Git / GitHub",
-              "Google Colab",
+              "SQL Server",
+              "BigQuery",
               "Jupyter Notebook",
               "Notion",
-              "VS Code"
+              "Git / GitHub"
             ]
           }
         ]
       },
       "projects": {
         "eyebrow": "Projects",
-        "title": "Applied work and portfolio in progress",
-        "intro": "A growing portfolio focused on analysis, automation, and business problem solving through data.",
+        "title": "Applied cases in data and operations",
+        "intro": "Applied work focused on conversation processing, report automation, and operational support for data pipelines.",
         "items": [
           {
-            "title": "Customer churn prediction",
-            "description": "An in-progress project focused on banking customer data to understand service cancellation patterns and train a classification model to predict churn.",
+            "title": "SmartVOC conversation processing",
+            "description": "Processing and validation of conversations through Python scripts, JSONL-to-Excel transformation, batch status review, and analysis of outputs generated by AI models.",
             "tech": [
               "Python",
-              "Pandas",
-              "Scikit-learn",
-              "Data visualization"
+              "pandas",
+              "JSON / JSONL",
+              "Excel",
+              "SQL Server"
             ],
             "ctaLabel": "Coming soon",
             "ctaUrl": "",
-            "status": "Applied project"
+            "status": "SmartVOC"
           },
           {
-            "title": "Nexus - Internal analytics and visualization platform",
-            "description": "Contribution to the development and strengthening of a multi-tenant platform focused on data visualization and client-specific insights, including security, authentication, and access control improvements.",
+            "title": "Client report automation",
+            "description": "Report generation based on conversation analysis, quality metrics, call reasons, guideline compliance, and operational findings.",
             "tech": [
-              "JavaScript",
-              "Node.js",
-              "Express",
-              "Auth0",
-              "SQLite / PostgreSQL",
-              "Docker",
+              "Python",
+              "Excel",
+              "Power Query",
+              "Notion",
+              "Conversational analysis"
+            ],
+            "ctaLabel": "Coming soon",
+            "ctaUrl": "",
+            "status": "Reporting"
+          },
+          {
+            "title": "Operational support for data pipelines",
+            "description": "Support for error review, reprocessing, endpoint load validation, and SQL queries for processed data traceability.",
+            "tech": [
+              "Python",
+              "SQL",
+              "SQL Server",
+              "AWS",
               "Kubernetes"
             ],
             "ctaLabel": "Coming soon",
             "ctaUrl": "",
-            "status": "Internal product"
-          },
-          {
-            "title": "Evaluation of language-model categorizations",
-            "description": "Comparative analysis of language-model outputs on call-center transcripts, measuring agreement, errors, missing categories, and classification quality.",
-            "tech": [
-              "Python",
-              "Pandas",
-              "LLMs",
-              "Text analysis",
-              "Evaluation metrics"
-            ],
-            "ctaLabel": "Coming soon",
-            "ctaUrl": "",
-            "status": "Conversational analytics"
-          },
-          {
-            "title": "Conversational dataset normalization and preparation",
-            "description": "Cleaning, transformation, and standardization workflows for JSON, JSONL, and Excel datasets used for analysis, taxonomy validation, and analytical reporting.",
-            "tech": [
-              "Python",
-              "Pandas",
-              "JSON / JSONL",
-              "Excel"
-            ],
-            "ctaLabel": "Coming soon",
-            "ctaUrl": "",
-            "status": "Automation"
+            "status": "Data operations"
           }
         ]
       },
       "education": {
         "eyebrow": "Education",
         "title": "Technical foundation and continuous learning",
-        "intro": "My background combines formal training in Computer Engineering with hands-on specialization in data analysis, SQL, Python, statistics, machine learning, and applied AI.",
+        "intro": "My background combines formal training in Computer Engineering with hands-on learning in data, SQL, Python, automation, cloud, and data systems.",
         "items": [
           {
             "title": "Computer Engineering & Informatics - Universidad Andrés Bello",
             "meta": "March 2023 - September 2025",
-            "description": "Formal foundation in programming, logic, data structures, and technical fundamentals for building solutions."
+            "description": "Formal foundation in programming, logic, data structures, databases, and technical fundamentals for building solutions."
           },
           {
             "title": "Relevant certifications",
@@ -675,48 +627,48 @@
             "description": "Google Data Analytics Professional Certificate (2025), IBM Data Science Professional Certificate (2024), and IBM AI Developer Professional Certificate (2025)."
           },
           {
-            "title": "Complementary training in data analysis",
+            "title": "Complementary training in data",
             "meta": "Ongoing specialization",
-            "description": "Applied courses such as Data Analysis with Python and Databases and SQL for Data Science, focused on hands-on work with data."
+            "description": "Applied courses such as Data Analysis with Python and Databases and SQL for Data Science, focused on hands-on work with data, Python, and SQL."
           },
           {
             "title": "Ongoing Data Science Bootcamp",
             "meta": "Professional development",
-            "description": "Continued growth in SQL, Python, statistics, machine learning, visualization, and AI through study and applied projects."
+            "description": "Continued growth in SQL, Python, statistics, machine learning, visualization, and AI through study and applied projects, with a current orientation toward Data Engineering."
           }
         ]
       },
       "approach": {
         "eyebrow": "My approach",
-        "title": "Analysis with context, clarity, and reproducibility",
-        "intro": "My approach goes beyond processing data: I aim to understand context, ask better questions, and communicate results clearly. I want every analysis to support a decision, an improvement, or a useful business conversation.",
+        "title": "Data work with traceability, context, and responsible operation",
+        "intro": "My approach combines analytical judgment with technical discipline: understanding context, processing data reproducibly, validating results, and keeping traceability when a flow needs support or reprocessing.",
         "items": [
           {
-            "title": "Business-centered data work",
-            "description": "Prioritizing useful questions, context, and action over isolated metrics."
+            "title": "Data traceability",
+            "description": "Reviewing states, identifiers, outputs, and loads to understand what happened at each processing stage."
           },
           {
-            "title": "Reproducible analysis",
-            "description": "Organized and traceable processes that are easier to maintain when the same need returns."
+            "title": "Maintainable automation",
+            "description": "Favoring organized scripts and processes that can be repeated, adjusted, and validated as files or needs change."
           },
           {
-            "title": "Clear communication",
-            "description": "Translating technical results into understandable messages for non-technical teams and leadership."
+            "title": "Clear technical communication",
+            "description": "Translating findings, errors, and processing states into useful messages for technical and business teams."
           },
           {
             "title": "Continuous learning",
-            "description": "Constantly updating technical and analytical judgment with focus on Data Science, applied AI, and real business use cases."
+            "description": "Progressively deepening my work in Data Engineering, cloud, automation, databases, and applied AI for data systems."
           },
           {
-            "title": "AI as strategic support",
-            "description": "Using language models to accelerate and extend analysis without replacing judgment, validation, or analytical responsibility."
+            "title": "AI with validation",
+            "description": "Using AI models as part of processing flows while preserving output validation, error review, and responsibility over the data."
           }
         ]
       },
       "contact": {
         "eyebrow": "Contact",
         "title": "Let's talk",
-        "text": "I am open to professional opportunities, data collaborations, and conversations about analytics, automation, Data Science, and applied artificial intelligence.",
+        "text": "I am open to Junior Data Engineer, technical Data Analyst, or Junior AI/Data Engineer opportunities, as well as collaboration on data automation and AI-powered processing projects.",
         "formTitle": "Direct message",
         "submitLabel": "Send message",
         "sendingLabel": "Sending...",
@@ -748,7 +700,7 @@
           {
             "label": "LinkedIn",
             "href": "https://www.linkedin.com/in/camilosuazom/",
-            "description": "Updated profile with experience, certifications, and a data-focused career path."
+            "description": "Updated profile with experience, certifications, and a junior Data Engineering focus."
           },
           {
             "label": "Download CV",
@@ -758,7 +710,7 @@
         ]
       },
       "footer": {
-        "text": "Camilo Suazo - Data Analyst / Computer Engineering & Informatics"
+        "text": "Camilo Suazo - Junior Data Engineer / Computer Engineering & Informatics"
       }
     }
   }
