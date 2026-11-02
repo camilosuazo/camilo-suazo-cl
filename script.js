@@ -5,7 +5,6 @@ let sectionObserver = null;
 let lightboxController = null;
 
 document.addEventListener('DOMContentLoaded', () => {
-    initEventModal();
     initNavbar();
     initSmoothScroll();
     initScrollAnimations();
@@ -110,6 +109,9 @@ function initNavbar() {
         navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
+            const isOpen = navMenu.classList.contains('active');
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+            navToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
         });
     }
 
@@ -121,6 +123,8 @@ function initNavbar() {
 
             navToggle.classList.remove('active');
             navMenu.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Abrir menú');
         });
     });
 }
@@ -134,13 +138,15 @@ function initSmoothScroll() {
             }
 
             event.preventDefault();
-            const headerOffset = 80;
+            const headerOffset = window.innerWidth <= 768 ? 0 : 80;
             const elementPosition = target.offsetTop;
             const offsetPosition = elementPosition - headerOffset;
+            const scrollDistance = Math.abs(window.scrollY - offsetPosition);
+            const behavior = scrollDistance > window.innerHeight * 2 ? 'auto' : 'smooth';
 
             window.scrollTo({
                 top: offsetPosition,
-                behavior: 'smooth'
+                behavior
             });
         });
     });
@@ -167,7 +173,7 @@ function observeAnimatedElements(scope) {
         return;
     }
 
-    scope.querySelectorAll('.section-title, .section-subtitle, .band-card, .show-item, .shows-empty, .platform-card, .social-link, .contact-item, .store-product').forEach((element) => {
+    scope.querySelectorAll('.section-title, .section-subtitle, .section-number, .timeline-item, .highlight-card, .project-card, .collaboration-feature, .release-card, .production-card, .press-card, .education-card, .platform-row, .contact-item, .store-product').forEach((element) => {
         if (element.dataset.animatedReady === 'true') {
             return;
         }

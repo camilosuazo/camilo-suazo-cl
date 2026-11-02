@@ -6,8 +6,8 @@
     "youtubeThumbnailUrl": "https://img.youtube.com/vi/hyMw8920dbA/maxresdefault.jpg"
   },
   "shows": {
-    "emptyTitle": "Fechas por confirmar",
-    "emptySubtitle": "Pronto anunciaremos nuevas presentaciones",
+    "emptyTitle": "Sin fechas anunciadas",
+    "emptySubtitle": "Revisa mis redes para futuras presentaciones",
     "items": [
       {
         "id": "jardin-de-gente-2026-06-12",
@@ -18,7 +18,7 @@
         "postUrl": "",
         "postLabel": "",
         "note": "Viernes 12 de junio, 7:00 pm. Cafe y Espacio Cultural Jardin de Gente.",
-        "visible": true
+        "visible": false
       }
     ]
   },
@@ -30,7 +30,7 @@
         "name": "Polera \"Hay huellas que ocultan\"",
         "variant": "Negro / Blanco",
         "priceLabel": "$10.000",
-        "availabilityLabel": "Próximamente",
+        "availabilityLabel": "No disponible",
         "available": false,
         "visible": true,
         "images": [
@@ -45,7 +45,7 @@
         "name": "Disco \"Envío\"",
         "variant": "CD Físico",
         "priceLabel": "$12.000",
-        "availabilityLabel": "Próximamente",
+        "availabilityLabel": "No disponible",
         "available": false,
         "visible": true,
         "images": [
@@ -59,7 +59,7 @@
         "name": "Taza \"Pájaro Azul\"",
         "variant": "Cerámica",
         "priceLabel": "$8.000",
-        "availabilityLabel": "Próximamente",
+        "availabilityLabel": "No disponible",
         "available": false,
         "visible": true,
         "images": [
@@ -73,7 +73,7 @@
         "name": "Tote Bag \"Fui pa Temuco\"",
         "variant": "Tela algodón",
         "priceLabel": "$7.000",
-        "availabilityLabel": "Próximamente",
+        "availabilityLabel": "No disponible",
         "available": false,
         "visible": true,
         "images": [
@@ -87,7 +87,7 @@
         "name": "Libreta \"Pájaro Azul\"",
         "variant": "Tapa dura con elástico",
         "priceLabel": "$6.000",
-        "availabilityLabel": "Próximamente",
+        "availabilityLabel": "No disponible",
         "available": false,
         "visible": true,
         "images": [
